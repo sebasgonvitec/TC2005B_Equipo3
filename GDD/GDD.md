@@ -46,9 +46,6 @@
 
 ### **Summary**
 
-Videojuego del género "puzzle platformer" y tipo "maker" que
-sigue la historia de una niña atrapada en sus sueños la cual para despertar debe de alcanzar una luz. <br>
-
 A puzzle platformer videogame that offers a "maker" modality. It follows the story of a girl trapped in her dreams and in order to wake up she has to reach the light.  
 
 ### **Gameplay**
@@ -63,29 +60,64 @@ armar el nivel que le permita llegar a la meta, otros obstáculos son las cajas,
 
 Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
 **** agregar la calma del aesthetic
+
 ## _Technical_
 
 ---
 
 ### **Screens**
 
-1. Title Screen
-    1. Options
-2. Level Select
-3. Game
-    1. Inventory
-    2. Assessment / Next Level
-4. End Credits
-
-_(example)_
+Below is a breakdown of the screens that make up the "Asleep" video game.
+1.	Title Screen
+    1.	Game Instructions
+    2.	Options (Play or Create)
+2.	Maker Mode
+    1. Assets 
+    2. Grid
+3.	Level Selection
+4.	Game Mode
+5.  Level Passed Screena
+5.	End Credits
 
 ### **Controls**
 
-How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)
+In order for the player to have a proper interaction with the video game, the controls that govern it are defined as follows. Mainly, the player interacts with the environment and with the featured objects mentioned in the description below. It is relevant to mention, that for simplicity of the design the described controls are constant and the only option that the player has to interact with the video game.
+1.	**Player Movement** 
+    1.	Left movement – _left arrow key_ 
+    2.	Right movement – _right arrow key_ 
+    3.	Jump – _spacebar key_
+2.	**Dreamcatcher Capture**
+    1. The player passing through the object will trigger its capture.
+3.	**Portal Unlocking** 
+    1.	Enter portal – _up arrow key_ (only works when the needed dreamcatcher was recently captured) 
+4.	**Lever Pulling** <br>
+    1.	Activate lever – _E key_
+5.	**Box Drag** <br>
+    1.	The player moving towards any of the box’s walls will displace it in the same direction of the player's movement.
 
 ### **Mechanics**
 
-Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.
+**Describir seleccion de atributos y todo lo relacionado a los assets* <br>
+
+In this section you will find the rules and mechanics that govern the behavior of the game. Particularly these mechanics are divided into two sections, Gameplay and the Builder.
+
+1. Main Objectives
+    - The game's main objective is to reach the light that represents waking up. This is accomplished by the resolution of the various puzzles that make up the level.
+    - The maker mode main objective is for the user to design, create and publish a completely functional and logically attractive level.
+    
+2.	Builder
+    1.	_Drag and Drop_: 
+    2.	External Element Selection (music)
+    3.  Saving and Publishing of the Level
+    4.  Play the Level
+
+3.	Gameplay
+    1.	Dreamcatcher Capture: accomplished through the register of a trigger event in a collider
+    2.	Portal Unlocking: accomplished through tag matching between objects
+    3.	Box Drag: accomplished through the physics engine that enables a force to be imparted on an object.
+    4.	Player Movement: side to side movement is accomplished through the constant increase or decrease of its position coordinates, while jumping utilizes the physics engine which for the implementation of simulated gravity. 
+    5.	Lever Pulling: accomplished through a key input listener accompanied by the action to follow, in this case displacing the sliding door.
+
 
 ## _Level Design_
 
@@ -119,8 +151,6 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
             1. Guards
             2. Giant rats
             3. Chests
-
-_(example)_
 
 ### **Game Flow**
 
@@ -172,7 +202,6 @@ _(example)_
 5. BaseInteractable
     1. InteractableButton
 
-_(example)_
 
 ## _Graphics_
 
@@ -180,44 +209,56 @@ _(example)_
 
 ### **Style Attributes**
 
-What kinds of colors will you be using? Do you have a limited palette to work with? A post-processed HSV map/image? Consistency is key for immersion.
+#### **Color Palette**
+For the design of the videogame, we intend to use a range of soft colors that convey tranquility and harmony. For the same reason, the colors will not be very saturated and will tend to be of the pastel type. Particularly to follow the nocturnal plot of the video game, colors such as purple, lilac, lavender and shades of pink that resemble dusk will be used frequently. 
 
-What kind of graphic style are you going for? Cartoony? Pixel-y? Cute? How, specifically? Solid, thick outlines with flat hues? Non-black outlines with limited tints/shades? Emphasize smooth curvatures over sharp angles? Describe a set of general rules depicting your style here.
+The following is a color palette that encapsulates the characteristic colors of the video game. This palette is flexible and does not include all the colors used in the game. However, all of the colors in the game are consistent in style.
 
+
+
+#### **Graphic Style**
+The aesthetic sought for the game is known as "dreamy". This on the one hand has a cartoon style, but in a minimalist and elegant way. In order to go deeper into this style, a series of rules that characterize it are described below.
+
+**General Rules**
+-	No outlines or black border are used.
+-	Smooth curves are emphasized.
+-	_Minimalist:_ Details are kept to a minimum (character faces without facial expression, few shadows)
+-	_Geometric:_ The outline of objects is very close to simple geometric figures.
+- Solid materials are used (few textures, ombre effects, or complex patterns).
+-	The overall look is flat and lacks of depth in terms of perspective.
+
+
+#### **Visual Feedback** FALTA
 Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), are great for teaching the player how to play through trial and error, instead of scripting a lengthy tutorial. What kind of visual feedback are you going to use to let the player know they&#39;re interacting with something? That they \*can\* interact with something?
 
 ### **Graphics Needed**
+1.	**Characters**
+    1.	Main Character
+        1.	Emily (idle, walking, jumping, pushing, entering, pulling, landing)
+    2.	Other (MAYBE ENEMIES)
+2.	**Blocks**
+    1.	Solid Material Block
+    2.	Patterned Material Block
+    3.	Solid Material Sliding Door
+    5.	Pre-made Grass Platform
+    6.	Pre-made Solid Material Platform
+    8.	Pre-made Solid Material Platform with roof
+3.	**Ambient**
+    1.	Fireflies (idle, fluttering)
+    1.	Moon
+    2.	Stars
+    3.	Flower
+    4.	Tree
+    5.	Bush
+    6.	Leaf
+    7.	Rocks
 
-1. Characters
-    1. Human-like
-        1. Goblin (idle, walking, throwing)
-        2. Guard (idle, walking, stabbing)
-        3. Prisoner (walking, running)
-    2. Other
-        1. Wolf (idle, walking, running)
-        2. Giant Rat (idle, scurrying)
-2. Blocks
-    1. Dirt
-    2. Dirt/Grass
-    3. Stone Block
-    4. Stone Bricks
-    5. Tiled Floor
-    6. Weathered Stone Block
-    7. Weathered Stone Bricks
-3. Ambient
-    1. Tall Grass
-    2. Rodent (idle, scurrying)
-    3. Torch
-    4. Armored Suit
-    5. Chains (matching Weathered Stone Bricks)
-    6. Blood stains (matching Weathered Stone Bricks)
-4. Other
-    1. Chest
-    2. Door (matching Stone Bricks)
-    3. Gate
-    4. Button (matching Weathered Stone Bricks)
-
-_(example)_
+4.  **Other**
+    1.	Dreamcatcher (4 different colors)
+    2.	Portals (4 different colors)
+    3.	Lever
+    4.	Movable Box
+    5.	Magic Light (game’s finish line)
 
 
 ## _Sounds/Music_
