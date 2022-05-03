@@ -55,12 +55,14 @@ A puzzle platformer videogame that offers a "maker" modality. It follows the sto
 
 Con respecto a la narrativa del juego, como se mencionó anteriormente, sigue las aventuras de la protagonista y lo que necesita hacer para despertar, alcanzar la luz. Para poder despertar, ella necesita resolver diferentes puzzles bajo determinado tiempo antes de que la alcance la pesadilla. <br>
 El propósito del juego con respecto al usuario es lograr reforzar conceptos como el diseño y la construcción gráfica de un videjuego por medio de la modalidad "maker" del mismo. Dicha modalidad permite que el usuario cree y customice sus propios niveles y la dificultad de ellos. <br>
-El obstáculo principal que enfrenta el usuario es armar el nivel que le permita llegar a la meta, otros obstáculos son las cajas, el enemigo y la pesadilla. 
+El obstáculo principal que enfrenta el usuario es idear un nivel lógicamente retador y atractivo de resolver.
+El personaje se encuentra con distintos obstáculos ****
+armar el nivel que le permita llegar a la meta, otros obstáculos son las cajas, el enemigo y la pesadilla. 
 
 ### **Mindset**
 
 Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
-
+**** agregar la calma del aesthetic
 ## _Technical_
 
 ---
