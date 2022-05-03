@@ -286,32 +286,46 @@ For the sound effects mentioned previously we will also make use of synthesizers
 
 _(define the main activities and the expected dates when they should be finished. This is only a reference, and can change as the project is developed)_
 
-1. develop base classes
-    1. base entity
-        1. base player
-        2. base enemy
-        3. base block
-  2. base app state
-        1. game world
-        2. menu world
-2. develop player and basic block classes
-    1. physics / collisions
-3. find some smooth controls/physics
-4. develop other derived classes
-    1. blocks
-        1. moving
-        2. falling
-        3. breaking
-        4. cloud
-    2. enemies
-        1. soldier
-        2. rat
-        3. etc.
-5. design levels
-    1. introduce motion/jumping
-    2. introduce throwing
-    3. mind the pacing, let the player play between lessons
-6. design sounds
-7. design music
-
-_(example)_
+1. Definición del videojuego
+    1. Establacer Narrativa
+    2. Establecer mecánicas y acciones del personaje
+    3. Establecer conducta del usuario y el personaje dentro del juego
+    4. Elevator Pitch - Junta con OSF
+    5. Retroalimentación 
+2. Definición de Requerimientos
+    1. Funcionales
+        1. Diagramas Casos de Uso
+        2. Diagrama de Actividades
+    2.  No Funcionales 
+    3. Retroalimentación y Correcciones - Junta con OSF
+3. Definición de Bases Datos 
+    1. Diagramas Entidad-Relación
+    2. Diagrama de Clases 
+    3. Normalización y Correcciones
+4. Creación Base de Datos
+5. Desarrollo Frontend y Backend 
+    1. Frontend 
+        1. Creación página web
+        2. Estilización página web
+        3. Agregar contenido 
+        4. Conexión página web - backend
+        5. Funcionamiento óptimo de la página
+        6. Retroalimentación 
+    2. Backend
+        1. Conexión con el servidor
+        2. Conexión con la Base de Datos
+        3. Conexión con el Videojuego
+6. Desarrollo del Videojuego 
+    1. Diseño de todos los elementos gráficos
+    2. Diseño de los sonidos y la música
+    3. Creación del bloque unitario
+    4. Diseño de las escenas
+    5. Programación de mecánicas de los personajes
+    6. Programación de mecánicas de los objetos
+    7. Programación del primer nivel del videojuego
+    8. Programación modalidad "maker"
+    9. Integración de modalidad maker y el primer nivel 
+    10. Conexión con la Base de Datos
+    11. Conexión con la Página Web
+    12. Retroalimentación - Junta con OSF
+7. Presentación del Proyecto
