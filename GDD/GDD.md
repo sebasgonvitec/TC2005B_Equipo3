@@ -1,10 +1,10 @@
-# **Awake**
+# **Asleep**
 
 ## _Game Design Document_
 
 ---
 
-##### **Copyright notice / author information / boring legal stuff nobody likes**
+##### ** Designed and built by Magic Mole Studios / Copyright notice / author information / boring legal stuff nobody likes**
 
 ##
 ## _Index_
@@ -224,40 +224,61 @@ _(example)_
 
 ### **Style Attributes**
 
-Again, consistency is key. Define that consistency here. What kind of instruments do you want to use in your music? Any particular tempo, key? Influences, genre? Mood?
+A great soundtrack often defines the overall ambience and immersion of a game. The main theme of the game are dreams so it just makes sense to have a dreamy soundtrack. The main goal of the in-game music is to create an atmosphere of relaxation, beauty and challenge that evokes feelings of fantasy, fun and excitement.
 
-Stylistically, what kind of sound effects are you looking for? Do you want to exaggerate actions with lengthy, cartoony sounds (e.g. mario&#39;s jump), or use just enough to let the player know something happened (e.g. mega man&#39;s landing)? Going for realism? You can use the music style as a bit of a reference too.
+To make music sound dreamy we will be relying on a bunch of musical components such as slow tempos, Major 7th chords, Lydian mode and whole tone musical scales, repetition, among many others. For the instruments and sounds we will be using mainly synthesizers, which offer flexibility and variety in the creation and customization of sounds; string instruments such as guitar and harp, and soft percussive elements. Pair all of that with a bunch of reverb and you got the perfect music for the game.
 
- Remember, auditory feedback should stand out from the music and other sound effects so the player hears it well. Volume, panning, and frequency/pitch are all important aspects to consider in both music _and_ sounds - so plan accordingly!
+To aid the nightmare mechanics of the game, progressive noise and chaos will be introduced to the songs to create a more tense feeling.
+
+Some of our influences and inspiration:
+- https://www.youtube.com/watch?v=7aDWVDuRCiA
+- https://www.youtube.com/watch?v=M3hFN8UrBPw
+- https://www.youtube.com/watch?v=34UutDrXV2Q
+- https://www.youtube.com/watch?v=0HbnqjGirFg
+
+Because of our limited time we plan on composing three songs for the user to choose when creating a level, a song for the game maker and all the sound effects of the buttons of the UI, player movement and player interaction with the map.
+
+For the sound effects mentioned previously we will also make use of synthesizers and percussion. The style of the effects should be subtle and should be able to blend in with the atmosphere of the game, with no exaggerated high-pitched noises just to put an example. To blend this elements together we will consider the key, volume and frequencies of the whole musical environment, so that the player can clearly hear the auditory feedback from the level maker and the gameplay over the background music.
+
 
 ### **Sounds Needed**
 
-1. Effects
-    1. Soft Footsteps (dirt floor)
-    2. Sharper Footsteps (stone floor)
-    3. Soft Landing (low vertical velocity)
-    4. Hard Landing (high vertical velocity)
-    5. Glass Breaking
-    6. Chest Opening
-    7. Door Opening
-2. Feedback
-    1. Relieved &quot;Ahhhh!&quot; (health)
-    2. Shocked &quot;Ooomph!&quot; (attacked)
-    3. Happy chime (extra life)
-    4. Sad chime (died)
+1. Maker Effects
+    1. Grid attachment
+    2. Element selection
+    3. Element placement
+    4. Elements dragged to trash
+    5. Element parameter selection
+    6. Play button
 
-_(example)_
+2. Gameplay Effects
+    1. Player footsteps
+    2. Player jump
+    3. Landing on box
+    4. Landing on platform
+    5. Grabbing dream catcher
+    6. Going though a portal
+    7. Appearing in other portal
+    8. Box dragging
+    9. Box landing on platform
+    10. Box landing on other box
+    9. Lever/door activation
+    10. Going through final portal
+    11. Not having dream catcher and trying to go through portal
+    12. Increasing nightmare sound
+
+2. Feedback
+    1. Effort grunt while moving boxes
+    2. Surprised sound when grabbing dream catcher
+    3. Scared gasp when reached by nightmare
 
 ### **Music Needed**
 
-1. Slow-paced, nerve-racking &quot;forest&quot; track
-2. Exciting &quot;castle&quot; track
-3. Creepy, slow &quot;dungeon&quot; track
-4. Happy ending credits track
-5. Rick Astley&#39;s hit #1 single &quot;Never Gonna Give You Up&quot;
-
-_(example)_
-
+1. Playful, repetitive &quot;maker&quot; track
+2. Dreamy &quot;in-game&quot; track 1
+3. Dreamy &quot;in-game&quot; track 2
+4. Dreamy &quot;in-game&quot; track 3
+5. Exciting, achievement &quot;game stats&quot; track
 
 ## _Schedule_
 
