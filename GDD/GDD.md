@@ -162,7 +162,6 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
 6. Player picks up rock and throws at glass (&quot;throw&quot; taught)
 7. … etc.
 
-_(example)_
 
 ## _Development_
 
@@ -177,7 +176,6 @@ _(example)_
 2. BaseObstacle
 3. BaseInteractable
 
-_(example)_
 
 ### **Derived Classes / Component Compositions**
 
@@ -214,7 +212,7 @@ For the design of the videogame, we intend to use a range of soft colors that co
 
 The following is a color palette that encapsulates the characteristic colors of the video game. This palette is flexible and does not include all the colors used in the game. However, all of the colors in the game are consistent in style.
 
-
+<img src="../GDD/img/AsleepColorPalette.png">
 
 #### **Graphic Style**
 The aesthetic sought for the game is known as "dreamy". This on the one hand has a cartoon style, but in a minimalist and elegant way. In order to go deeper into this style, a series of rules that characterize it are described below.
