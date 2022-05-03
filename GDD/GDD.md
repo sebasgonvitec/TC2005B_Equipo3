@@ -46,15 +46,20 @@
 
 ### **Summary**
 
-Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!
+Videojuego del género "puzzle platformer" y tipo "maker" que
+sigue la historia de una niña atrapada en sus sueños la cual para despertar debe de alcanzar una luz. <br>
+
+A puzzle platformer videogame that offers a "maker" modality. It follows the story of a girl trapped in her dreams and in order to wake up she has to reach the light.  
 
 ### **Gameplay**
 
-What should the gameplay be like? What is the goal of the game, and what kind of obstacles are in the way? What tactics should the player use to overcome them?
+Con respecto a la narrativa del juego, como se mencionó anteriormente, sigue las aventuras de la protagonista y lo que necesita hacer para despertar, alcanzar la luz. Para poder despertar, ella necesita resolver diferentes puzzles bajo determinado tiempo antes de que la alcance la pesadilla. <br>
+El propósito del juego con respecto al usuario es lograr reforzar conceptos como el diseño y la construcción gráfica de un videjuego por medio de la modalidad "maker" del mismo. Dicha modalidad permite que el usuario cree y customice sus propios niveles y la dificultad de ellos. <br>
+El obstáculo principal que enfrenta el usuario es armar el nivel que le permita llegar a la meta, otros obstáculos son las cajas, el enemigo y la pesadilla. 
 
 ### **Mindset**
 
-What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?
+Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
 
 ## _Technical_
 
