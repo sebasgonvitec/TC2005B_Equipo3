@@ -63,8 +63,8 @@ The maker seeks to reinforce concepts of graphical and logical level design by p
 
 ### **Mindset**
 
-Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
-**** agregar la calma del aesthetic
+What the mechanics of our game intend to provoke in the player, is the capacity to solve puzzles under pressure (by being timed) while being pursued by the nightmare. <br>
+In regards to our atmosphere and aesthetic, in contrast with our game mechanics, we want the player to be calm and in peace through our color palette and music design. As the game progresses, it's our goal to make the player feel excitement and have a sense of adventure and curiosity.
 
 ### **Logo and Main Character Illustration**
 <img src="../GDD/img/logo.png" width=200>
