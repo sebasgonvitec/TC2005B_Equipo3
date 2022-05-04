@@ -4,9 +4,17 @@
 
 ---
 
-##### ** Designed and built by Magic Mole Studios / Copyright notice / author information / boring legal stuff nobody likes**
+##### Designed and built by Magic Mole Studios <br>
+##### Copyright &copy; Magic Mole Studios 2022 <br> 
+##### [Full Copyright Notice](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+<br>
 
-##
+### **Team Members**
+#### Sebastian Gonzalez Villacorta, A01029746
+#### Andreina Sananez Rico, A01024927
+#### Karla Valeria Mondragon Rosas, A01025108
+<br>
+
 ## _Index_
 
 ---
@@ -46,20 +54,23 @@
 
 ### **Summary**
 
-A puzzle platformer videogame that offers a "maker" modality. It follows the story of a girl trapped in her dreams and in order to wake up she has to reach the light.  
+A custom puzzle platformer videogame maker. It follows the story of a girl trapped in her dreams and in order to wake up she has to solve puzzles and reach an objective.  
 
 ### **Gameplay**
 
-Con respecto a la narrativa del juego, como se mencionó anteriormente, sigue las aventuras de la protagonista y lo que necesita hacer para despertar, alcanzar la luz. Para poder despertar, ella necesita resolver diferentes puzzles bajo determinado tiempo antes de que la alcance la pesadilla. <br>
-El propósito del juego con respecto al usuario es lograr reforzar conceptos como el diseño y la construcción gráfica de un videjuego por medio de la modalidad "maker" del mismo. Dicha modalidad permite que el usuario cree y customice sus propios niveles y la dificultad de ellos. <br>
-El obstáculo principal que enfrenta el usuario es idear un nivel lógicamente retador y atractivo de resolver.
-El personaje se encuentra con distintos obstáculos ****
-armar el nivel que le permita llegar a la meta, otros obstáculos son las cajas, el enemigo y la pesadilla. 
+The narrative follows Remi, a girl who's main objective is to escape the dream she is trapped in. By moving boxes, activating levers, colecting dreamcatchers and going through portals she will need to find a way to reach the Awake portal in a limited time period before the nightmare reaches her first. <br>
+The maker seeks to reinforce concepts of graphical and logical level design by providing the tools to create custom levels with varying difficulty and challenge. The flexibility this tools provide will encourage the user to think of clever ways to present challenge to the player while keeping it fun, and learn what makes up a good level in a game.<br>
 
 ### **Mindset**
 
 Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
 **** agregar la calma del aesthetic
+
+### **Logo and Main Character Illustration**
+<img src="../GDD/img/logo.png" width=200>
+<img src="../GDD/img/MainCharacter.png" height=190>
+
+<br>
 
 ## _Technical_
 
@@ -67,17 +78,30 @@ Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles baj
 
 ### **Screens**
 
-Below is a breakdown of the screens that make up the "Asleep" video game.
+Below is a breakdown of the screens that make up the _"Asleep"_ video game.
 1.	Title Screen
     1.	Game Instructions
     2.	Options (Play or Create)
-2.	Maker Mode
+
+    <img src="../GDD/img/Main.png" width=300>
+
+2.  Maker Mode
     1. Assets 
     2. Grid
-3.	Level Selection
-4.	Game Mode
-5.  Level Passed Screena
-5.	End Credits
+    
+    <img src="../GDD/img/MakerScreen.png" width=300>
+
+3.  Level Selection <br>
+<img src="../GDD/img/LevelSelection.png" width=300>
+
+4.	Game Mode <br>
+<img src="../GDD/img/GameMode.png" width=300>
+
+5.  Level Passed Screen<br>
+<img src="../GDD/img/LevelPassedScreen.png" width=300>
+
+5.	End Credits<br>
+<img src="../GDD/img/EndCredits.png" width=300>
 
 ### **Controls**
 
@@ -97,8 +121,6 @@ In order for the player to have a proper interaction with the video game, the co
 
 ### **Mechanics**
 
-**Describir seleccion de atributos y todo lo relacionado a los assets* <br>
-
 In this section you will find the rules and mechanics that govern the behavior of the game. Particularly these mechanics are divided into two sections, Gameplay and the Builder.
 
 1. Main Objectives
@@ -106,93 +128,132 @@ In this section you will find the rules and mechanics that govern the behavior o
     - The maker mode main objective is for the user to design, create and publish a completely functional and logically attractive level.
     
 2.	Builder
-    1.	_Drag and Drop_: 
-    2.	External Element Selection (music)
-    3.  Saving and Publishing of the Level
-    4.  Play the Level
+    1.	_Drag and Drop_: <br>
+    The user will be able to drag and drop elements to the level and snap them in place using a grid. The size of each element will be displayed in grid units to make the dimensions system easier to understand.
+    
+    2.	_Element properties selection_: <br>
+    Some elements may have different properties which the user will be able to change according to their needs. For example the color of a dream catcher, portal, and so on.
+
+    3. _Element dependecies_: <br>
+    Some elements need to have their counterpart placed in order for the game mechanics to function properly. When certain property needs to be met, a message will be displayed at the bottom of the page notifying the user. For example two portals and one dream catcher need to be placed for the whole thing to work, if one is not placed, a message such as "Second portal needed" will appear.
+    
+    3.  _Saving and Publishing of the Level_: <br>
+    For the level to be saved, the user will have to mamually press the save button, this will save the level to the database and publish it on the level selector screen. The info that will be saved includes the position of all the elements and the name of the level.
+
+    4.  _Play the Level_: <br>
+    When the play button is pressed, the user will enter game mode and will be able to play the level, however, this does not guarantee that the level will be saved to the database and thus it will only be playable once. (Please hit the save button, it's just one click).
+    
+    5. _Delete_: <br>
+    The user will be able to drag and drop any placed element they want to delete.
+    
+    6. _Music Selection_: <br>
+    The user will be able to choose from three different songs to accompany the level in game mode. 
+    
+    7. _Time Limit_: <br>
+    The user will be able to set a time limit for the level to be solved in.
 
 3.	Gameplay
-    1.	Dreamcatcher Capture: accomplished through the register of a trigger event in a collider
-    2.	Portal Unlocking: accomplished through tag matching between objects
-    3.	Box Drag: accomplished through the physics engine that enables a force to be imparted on an object.
-    4.	Player Movement: side to side movement is accomplished through the constant increase or decrease of its position coordinates, while jumping utilizes the physics engine which for the implementation of simulated gravity. 
-    5.	Lever Pulling: accomplished through a key input listener accompanied by the action to follow, in this case displacing the sliding door.
+    1. 	_Player Movement:_
+        - The player has movement from left to right and the ability to jump.
+        - The player can walk and jump from platform to platform, as well as interact with the objects explained below.
+
+    2.	_Dreamcatcher Capture:_
+        - The dreamcatcher is an object who's main purpose is to unlock a portal of its same color, including the awake portal.
+        - When the main character passes through a dreamcatcher, it disappears and the character now has the ability to unlock the corresponding portal.
+        
+    3.	_Portal Unlocking:_
+        - Portals are objects that work in pairs. One portal leads to another of its same color.
+        - Their main purpose is to teletransport the main character from one place of the scene to another.
+        - It can be used only if the player has the dreamcatcher with the same color as the portal.
+        
+    4.	_Box Drag:_
+        - Boxes can be dragged to a certain place to provide accessibility to some other element (like a platform or object).
+        - The box can only be moved if the player walks towards any of the box's walls. 
+        - The player can interact with the box by pushing or jumping on it.
+    
+    5.	_Lever Pulling:_
+        - Levers are objects that work in pairs. One part being the lever and the other the sliding door.
+        - The player can interact with the lever by pressing the corresponding key while being in front of it.
+        - When the lever is activated by the player, the correspondig sliding door opens.
+
+
 
 
 ## _Level Design_
 
 ---
-
-_(Note : These sections can safely be skipped if they&#39;re not relevant, or you&#39;d rather go about it another way. For most games, at least one of them should be useful. But I&#39;ll understand if you don&#39;t want to use them. It&#39;ll only hurt my feelings a little bit.)_
-
 ### **Themes**
 
-1. Forest
+1. Dream 
     1. Mood
-        1. Dark, calm, foreboding
+        1. Calm, dreamy, fantasy, surreal
     2. Objects
         1. _Ambient_
             1. Fireflies
-            2. Beams of moonlight
-            3. Tall grass
+            2. Moon/Moonlight
+            3. Stars
+            4. Flowers
         2. _Interactive_
-            1. Wolves
-            2. Goblins
-            3. Rocks
-2. Castle
-    1. Mood
-        1. Dangerous, tense, active
-    2. Objects
-        1. _Ambient_
-            1. Rodents
-            2. Torches
-            3. Suits of armor
-        2. _Interactive_
-            1. Guards
-            2. Giant rats
-            3. Chests
+            1. Portals
+            2. Awake Light
+            3. Boxes
+            4. Levers
+            5. Dreamcatchers
+            
 
 ### **Game Flow**
 
-1. Player starts in forest
-2. Pond to the left, must move right
-3. To the right is a hill, player jumps to traverse it (&quot;jump&quot; taught)
-4. Player encounters castle - door&#39;s shut and locked
-5. There&#39;s a window within jump height, and a rock on the ground
-6. Player picks up rock and throws at glass (&quot;throw&quot; taught)
-7. … etc.
+#### **Maker**
+1. Player starts in the _"Title Screen"_
+2. Player clicks _"Create"_ button
+1. User is taken to _"Maker Screen"_
+1. User can change the name of the level
+2. User drags and drops different elements to the screen
+3. User selects element properties
+4. User selects music
+5. User saves the created level
+6. User can enter play mode
+
+
+#### **Game Mode**
+1. Player starts in the _"Title Screen"_
+2. Player clicks _"Play"_ button
+3. Player is taken to the _"Level Selection Screen"_ and selects a level
+4. Player is taken to the _"Game Screen"_ and plays the selected level.
+5. When the player passes the level he can visualize his performance info.
+6. Finally, he is taken to the _"End Credits"_ screen.
 
 
 ## _Development_
 
 ---
 
+***Preguntar a Gil**
+
 ### **Abstract Classes / Components**
 
 1. BasePhysics
     1. BasePlayer
-    2. BaseEnemy
-    3. BaseObject
-2. BaseObstacle
-3. BaseInteractable
-
-
+    2. BaseElement
+2. BaseElement
+3. BaseNightmare
+4. BaseInteractable 
+    
 ### **Derived Classes / Component Compositions**
 
+
 1. BasePlayer
-    1. PlayerMain
-    2. PlayerUnlockable
-2. BaseEnemy
-    1. EnemyWolf
-    2. EnemyGoblin
-    3. EnemyGuard (may drop key)
-    4. EnemyGiantRat
-    5. EnemyPrisoner
-3. BaseObject
-    1. ObjectRock (pick-up-able, throwable)
-    2. ObjectChest (pick-up-able, throwable, spits gold coins with key)
-    3. ObjectGoldCoin (cha-ching!)
-    4. ObjectKey (pick-up-able, throwable)
+    1. PlayerMove
+2. BaseElement
+    1. BaseBlock
+        1. 
+    2. BaseSingleBox
+        1. BoxDrag
+    3. BaseDoubleBox
+    3. BasePortal
+    4. BaseDreamCatcher
+    5. BaseLever
+    6. BaseDoor
 4. BaseObstacle
     1. ObstacleWindow (destroyed with rock)
     2. ObstacleWall
@@ -212,13 +273,14 @@ For the design of the videogame, we intend to use a range of soft colors that co
 
 The following is a color palette that encapsulates the characteristic colors of the video game. This palette is flexible and does not include all the colors used in the game. However, all of the colors in the game are consistent in style.
 
-<img src="../GDD/img/AsleepColorPalette.png">
+<img src="../GDD/img/AsleepColorPalette.png" width=300>
+<br>
 
 #### **Graphic Style**
 The aesthetic sought for the game is known as "dreamy". This on the one hand has a cartoon style, but in a minimalist and elegant way. In order to go deeper into this style, a series of rules that characterize it are described below.
 
 **General Rules**
--	No outlines or black border are used.
+-	No outlines or black borders are used.
 -	Smooth curves are emphasized.
 -	_Minimalist:_ Details are kept to a minimum (character faces without facial expression, few shadows)
 -	_Geometric:_ The outline of objects is very close to simple geometric figures.
@@ -226,14 +288,40 @@ The aesthetic sought for the game is known as "dreamy". This on the one hand has
 -	The overall look is flat and lacks of depth in terms of perspective.
 
 
-#### **Visual Feedback** FALTA
-Well-designed feedback, both good (e.g. leveling up) and bad (e.g. being hit), are great for teaching the player how to play through trial and error, instead of scripting a lengthy tutorial. What kind of visual feedback are you going to use to let the player know they&#39;re interacting with something? That they \*can\* interact with something?
+#### **Visual Feedback**
+
+The visual feedback provided by the game is divided in two parts, the maker and the game mode. Both of the visual feedbacks will aid the user to understand the mechanics through trial and error.
+
+#### **Maker**
+- Grid snapping: Elements placed in the level will automatically snap to the grid, letting the user know the element has been correctly placed.
+- Delete animation: Elements drag to the delete section will have a simple disapperance animation.
+- Button push: Every element or selection that the user makes will be indicated by a change of style in the button pressed, much like buttons on any good application.
+- When certain properties of an element need to be met, a message with a distinctive color will appear indicating the user what to do in order to meet them.
+- When a level is saved, a success or failure message will appear indicating the status of the action.
+
+#### **Game mode**
+- Nightmare: When the the time limit for the level starts running out, a layer of chaos will start to appear at the bottom of the level and will expand until it covers the whole screen and the time runs out.
+
 
 ### **Graphics Needed**
+#### **Maker**
+1. List of elements section
+2. Element properties section
+3. Level options bar at the top
+4. Delete section
+5. Music section
+#### **Game mode**
+1. **UI**
+    1. Dreamcatcher inventory
+    2. Time left
+    3. In-game menu
+        1. Pause
+        2. Restart
+        3. Exit (return to level selector)
+        4. Options (if time allows it)
 1.	**Characters**
     1.	Main Character
-        1.	Emily (idle, walking, jumping, pushing, entering, pulling, landing)
-    2.	Other (MAYBE ENEMIES)
+        1.	Remi (idle, walking, jumping, pushing, entering, pulling, landing)
 2.	**Blocks**
     1.	Solid Material Block
     2.	Patterned Material Block
@@ -325,38 +413,36 @@ For the sound effects mentioned previously we will also make use of synthesizers
 
 ---
 
-_(define the main activities and the expected dates when they should be finished. This is only a reference, and can change as the project is developed)_
-
-1. Definición del videojuego
+1. Definición del videojuego - Semana 3
     1. Establacer Narrativa
     2. Establecer mecánicas y acciones del personaje
     3. Establecer conducta del usuario y el personaje dentro del juego
     4. Elevator Pitch - Junta con OSF
     5. Retroalimentación 
-2. Definición de Requerimientos
+2. Definición de Requerimientos - Semana 6 (Tec)
     1. Funcionales
         1. Diagramas Casos de Uso
         2. Diagrama de Actividades
     2.  No Funcionales 
     3. Retroalimentación y Correcciones - Junta con OSF
-3. Definición de Bases Datos 
+3. Definición de Bases Datos - Semana 6 (Tec)
     1. Diagramas Entidad-Relación
     2. Diagrama de Clases 
     3. Normalización y Correcciones
-4. Creación Base de Datos
+4. Creación Base de Datos - Semana 7
 5. Desarrollo Frontend y Backend 
-    1. Frontend 
+    1. Frontend - Semana 6 y 7
         1. Creación página web
         2. Estilización página web
         3. Agregar contenido 
         4. Conexión página web - backend
         5. Funcionamiento óptimo de la página
         6. Retroalimentación 
-    2. Backend
+    2. Backend - Semana 7 en adelante
         1. Conexión con el servidor
         2. Conexión con la Base de Datos
         3. Conexión con el Videojuego
-6. Desarrollo del Videojuego 
+6. Desarrollo del Videojuego - Semana 7 en adelante
     1. Diseño de todos los elementos gráficos
     2. Diseño de los sonidos y la música
     3. Creación del bloque unitario
@@ -369,4 +455,4 @@ _(define the main activities and the expected dates when they should be finished
     10. Conexión con la Base de Datos
     11. Conexión con la Página Web
     12. Retroalimentación - Junta con OSF
-7. Presentación del Proyecto
+7. Presentación del Proyecto - Semana 10 
