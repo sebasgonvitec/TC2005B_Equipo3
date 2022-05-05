@@ -254,10 +254,8 @@ In this section you will find the rules and mechanics that govern the behavior o
     4. BaseDreamCatcher
     5. BaseLever
     6. BaseDoor
-4. BaseObstacle
-    1. ObstacleWindow (destroyed with rock)
-    2. ObstacleWall
-    3. ObstacleGate (watches to see if certain buttons are pressed)
+4. BaseNightmare
+    1. kmk
 5. BaseInteractable
     1. InteractableButton
 
