@@ -261,7 +261,6 @@ In this section you will find the rules and mechanics that govern the behavior o
     2. DoorAnimation
 
 
-
 ## _Graphics_
 
 ---
