@@ -229,37 +229,37 @@ In this section you will find the rules and mechanics that govern the behavior o
 ---
 
 ***Preguntar a Gil**
-
-### **Abstract Classes / Components**
-
-1. BasePhysics
-    1. BasePlayer
-    2. BaseElement
-2. BaseElement
-3. BaseNightmare
-4. BaseInteractable 
     
 ### **Derived Classes / Component Compositions**
 
+#### **Maker**
+1. BaseDraggableElement
+2. BaseDelete
+3. BaseElementProperties
+4. BaseMusic
+
+#### **Game Mode**
 
 1. BasePlayer
-    1. PlayerMove
-2. BaseElement
-    1. BaseBlock
-        1. 
-    2. BaseSingleBox
-        1. BoxDrag
-    3. BaseDoubleBox
-    3. BasePortal
-    4. BaseDreamCatcher
-    5. BaseLever
-    6. BaseDoor
-4. BaseObstacle
-    1. ObstacleWindow (destroyed with rock)
-    2. ObstacleWall
-    3. ObstacleGate (watches to see if certain buttons are pressed)
-5. BaseInteractable
-    1. InteractableButton
+	1. PlayerMove
+	1. PlayerManager
+2. BasePortal
+	1. PortalBuilderManager
+	2. PortalTeletransport
+	3. PortalAnimationBasePlayer
+    4. PlayerMove
+3. BaseBox
+    1. DoubleBox
+    2. SingleBox
+    3. BoxDrag
+4. BaseBlock
+5. BaseLever
+    1. LeverAction
+    2. LeverAnimation
+6. BaseDoor
+    1. DoorAction
+    2. DoorAnimation
+
 
 
 ## _Graphics_
