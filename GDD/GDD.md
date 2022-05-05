@@ -243,7 +243,6 @@ In this section you will find the rules and mechanics that govern the behavior o
     2. PlayerManager
 2. BaseElement
     1. BaseBlock
-        1. 
     2. BaseBox
         1. DoubleBox
         2. SingleBox
@@ -253,6 +252,8 @@ In this section you will find the rules and mechanics that govern the behavior o
 	    2. PortalTeletransport
 	    3. PortalAnimation
     4. BaseDreamCatcher
+        1. CatchDreamCatcher
+        2. whatPortal 
     5. BaseLever
         1. LeverAction
         2. LeverAnimation
@@ -260,7 +261,8 @@ In this section you will find the rules and mechanics that govern the behavior o
         1. DoorAction
         2. DoorAnimation
 3. BaseNightmare
-    1. kmk
+    1. NightmareActionTrigger
+    2. NightmareAnimation
 4. BaseInteractable
     1. InteractableButton
 
