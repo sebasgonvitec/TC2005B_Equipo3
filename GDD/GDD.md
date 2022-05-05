@@ -229,20 +229,19 @@ In this section you will find the rules and mechanics that govern the behavior o
 ---
 
 ***Preguntar a Gil**
-
-### **Abstract Classes / Components**
-
-1. BasePhysics
-    1. BasePlayer
-    2. BaseElement
-2. BaseElement
-3. BaseNightmare
-4. BaseInteractable 
     
 ### **Derived Classes / Component Compositions**
 
+#### **Maker**
+1. BaseDraggableElement
+2. BaseDelete
+3. BaseElementProperties
+4. BaseMusic
+
+#### **Game Mode**
 
 1. BasePlayer
+<<<<<<< HEAD
     1. PlayerMove
 2. BaseElement
     1. BaseBlock
@@ -258,6 +257,26 @@ In this section you will find the rules and mechanics that govern the behavior o
     1. kmk
 5. BaseInteractable
     1. InteractableButton
+=======
+	1. PlayerMove
+	1. PlayerManager
+2. BasePortal
+	1. PortalBuilderManager
+	2. PortalTeletransport
+	3. PortalAnimationBasePlayer
+    4. PlayerMove
+3. BaseBox
+    1. DoubleBox
+    2. SingleBox
+    3. BoxDrag
+4. BaseBlock
+5. BaseLever
+    1. LeverAction
+    2. LeverAnimation
+6. BaseDoor
+    1. DoorAction
+    2. DoorAnimation
+>>>>>>> b0b6c8ecf486f41d0707d99834e5639cb7ea8ed7
 
 
 ## _Graphics_
