@@ -63,8 +63,8 @@ The maker seeks to reinforce concepts of graphical and logical level design by p
 
 ### **Mindset**
 
-Lo que se quiere provocar en el jugador es que sea capaz de resolver puzzles bajo presión (estar cronometrado), sabiendo que hay algo persiguiendolo. Aunque se provoque en el jugador emociones como la ansiedad o los nervios, el usuario necesitará guardar la calma. 
-**** agregar la calma del aesthetic
+What the mechanics of our game intend to provoke in the player, is the capacity to solve puzzles under pressure (by being timed) while being pursued by the nightmare. <br>
+In regards to our atmosphere and aesthetic, in contrast with our game mechanics, we want the player to be calm and in peace through our color palette and music design. As the game progresses, it's our goal to make the player feel excitement and have a sense of adventure and curiosity.
 
 ### **Logo and Main Character Illustration**
 <img src="../GDD/img/logo.png" width=200>
@@ -241,6 +241,7 @@ In this section you will find the rules and mechanics that govern the behavior o
 #### **Game Mode**
 
 1. BasePlayer
+<<<<<<< HEAD
 	1. PlayerMove
 	1. PlayerManager
 2. BasePortal
@@ -260,6 +261,25 @@ In this section you will find the rules and mechanics that govern the behavior o
     1. DoorAction
     2. DoorAnimation
 
+=======
+    1. PlayerMove
+2. BaseElement
+    1. BaseBlock
+        1. fyu
+    2. BaseSingleBox
+        1. BoxDrag
+    3. BaseDoubleBox
+    3. BasePortal
+    4. BaseDreamCatcher
+    5. BaseLever
+    6. BaseDoor
+4. BaseObstacle
+    1. ObstacleWindow (destroyed with rock)
+    2. ObstacleWall
+    3. ObstacleGate (watches to see if certain buttons are pressed)
+5. BaseInteractable
+    1. InteractableButton
+>>>>>>> 215acd0bd0aacc30128bc3fa8d66a2a45f4d5f5e
 
 
 ## _Graphics_
@@ -413,46 +433,46 @@ For the sound effects mentioned previously we will also make use of synthesizers
 
 ---
 
-1. Definición del videojuego - Semana 3
-    1. Establacer Narrativa
-    2. Establecer mecánicas y acciones del personaje
-    3. Establecer conducta del usuario y el personaje dentro del juego
-    4. Elevator Pitch - Junta con OSF
-    5. Retroalimentación 
-2. Definición de Requerimientos - Semana 6 (Tec)
-    1. Funcionales
-        1. Diagramas Casos de Uso
-        2. Diagrama de Actividades
-    2.  No Funcionales 
-    3. Retroalimentación y Correcciones - Junta con OSF
-3. Definición de Bases Datos - Semana 6 (Tec)
-    1. Diagramas Entidad-Relación
-    2. Diagrama de Clases 
-    3. Normalización y Correcciones
-4. Creación Base de Datos - Semana 7
-5. Desarrollo Frontend y Backend 
-    1. Frontend - Semana 6 y 7
-        1. Creación página web
-        2. Estilización página web
-        3. Agregar contenido 
-        4. Conexión página web - backend
-        5. Funcionamiento óptimo de la página
-        6. Retroalimentación 
-    2. Backend - Semana 7 en adelante
-        1. Conexión con el servidor
-        2. Conexión con la Base de Datos
-        3. Conexión con el Videojuego
-6. Desarrollo del Videojuego - Semana 7 en adelante
-    1. Diseño de todos los elementos gráficos
-    2. Diseño de los sonidos y la música
-    3. Creación del bloque unitario
-    4. Diseño de las escenas
-    5. Programación de mecánicas de los personajes
-    6. Programación de mecánicas de los objetos
-    7. Programación del primer nivel del videojuego
-    8. Programación modalidad "maker"
-    9. Integración de modalidad maker y el primer nivel 
-    10. Conexión con la Base de Datos
-    11. Conexión con la Página Web
-    12. Retroalimentación - Junta con OSF
-7. Presentación del Proyecto - Semana 10 
+1. Videogame Definition - Week 3 
+    1. Determine the game's narrative
+    2. Mechanics and Characters' Behavour Definition
+    3. Establish the user's and character's behavour within the game, the gameflow
+    4. Elevator Pitch - Meeting with the Association
+    5. Feedback
+2. Definition of Requirements - Week 6 (Tec)
+    1. Functional
+        1. Use Case Diagram
+        2. Activity Diagram
+    2.  Non-Functional
+    3. Feedback - Meeting with the Association
+3. Database Definition - Week 6 (Tec)
+    1. Entity-Relation Diagrams
+    2. Class Diagram 
+    3. Normalization and Feedback
+4. Database Creation - Week 7
+5. Frontend and Backend Development 
+    1. Frontend - Weeks 6 and 7
+        1. Creation of Webpage
+        2. Webpage stylization
+        3. Add content
+        4. Conection Webpage-Backend
+        5. Optimal functioning of the Webpage
+        6. Feedback 
+    2. Backend - Starting week 7
+        1. Conection to Server
+        2. Conection to Database
+        3. Conection to Videogame
+6. Videogame Development - Starting week 7
+    1. Graphic Elements Design
+    2. Sound and Music Design
+    3. Unitary Block Creation
+    4. Scenes Design 
+    5. Character Mechanics Programming
+    6. Element Mechanics Programming
+    7. First Level Programming
+    8. "Maker" Modality Programming 
+    9. Maker Modality and First Level Integration 
+    10. Conection to Database
+    11. Conection to Webpage
+    12. Feedback - Meeting with the Association
+7. Proyect Presentation - Week 12 
