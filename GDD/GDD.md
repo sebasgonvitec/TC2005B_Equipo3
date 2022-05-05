@@ -241,7 +241,6 @@ In this section you will find the rules and mechanics that govern the behavior o
 #### **Game Mode**
 
 1. BasePlayer
-<<<<<<< HEAD
 	1. PlayerMove
 	1. PlayerManager
 2. BasePortal
@@ -261,25 +260,6 @@ In this section you will find the rules and mechanics that govern the behavior o
     1. DoorAction
     2. DoorAnimation
 
-=======
-    1. PlayerMove
-2. BaseElement
-    1. BaseBlock
-        1. fyu
-    2. BaseSingleBox
-        1. BoxDrag
-    3. BaseDoubleBox
-    3. BasePortal
-    4. BaseDreamCatcher
-    5. BaseLever
-    6. BaseDoor
-4. BaseObstacle
-    1. ObstacleWindow (destroyed with rock)
-    2. ObstacleWall
-    3. ObstacleGate (watches to see if certain buttons are pressed)
-5. BaseInteractable
-    1. InteractableButton
->>>>>>> 215acd0bd0aacc30128bc3fa8d66a2a45f4d5f5e
 
 
 ## _Graphics_
