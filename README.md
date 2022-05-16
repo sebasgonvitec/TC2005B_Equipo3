@@ -1,2 +1,7 @@
 # TC2005B_Equipo3
-Repositorio del equipo 3 del bloque de Construcción de Software y Toma de Decisiones
+
+### Sebastián González Villacorta A01029746
+### Karla Valeria Mondragón Rosas A01025108
+### Andreina Isable Sanánez Rico A01024927
+
+Repository for Team 3 of Software Construction class
