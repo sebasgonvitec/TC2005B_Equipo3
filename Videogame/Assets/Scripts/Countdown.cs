@@ -1,8 +1,8 @@
 //Timer for the level
 
-// Sebastián González Villacorta
+// Sebastiï¿½n Gonzï¿½lez Villacorta
 // A01029746
-// Karla Valeria Mondragón Rosas
+// Karla Valeria Mondragï¿½n Rosas
 // A01025108
 
 // 13/05/2022
