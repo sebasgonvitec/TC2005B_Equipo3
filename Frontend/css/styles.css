@@ -72,12 +72,18 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
   }
+}
+
+@font-face {
+  font-family: Lombok;
+  src: url(../Lombok/LombokRegular.ttf);
 }
 
 body {
@@ -287,7 +293,7 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 0.875em;
   color: #fff;
-  background-color: #212529;
+  background-color: #140F2C;
   border-radius: 0.2rem;
 }
 kbd kbd {
@@ -2509,8 +2515,8 @@ textarea.form-control-lg {
   box-shadow: 0 0 0 0.25rem rgba(100, 161, 157, 0.25);
 }
 .form-check-input:checked {
-  background-color: #64a19d;
-  border-color: #64a19d;
+  background-color: #bc6886;
+  border-color: #bc6886;
 }
 .form-check-input:checked[type=checkbox] {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
@@ -2519,8 +2525,8 @@ textarea.form-control-lg {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #64a19d;
-  border-color: #64a19d;
+  background-color: #bc6886;
+  border-color: #bc6886;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
@@ -2597,7 +2603,7 @@ textarea.form-control-lg {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #64a19d;
+  background-color: #bc6886;
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3032,34 +3038,35 @@ textarea.form-control-lg {
   opacity: 0.65;
 }
 
+
 .btn-primary {
   color: #fff;
-  background-color: #64a19d;
-  border-color: #64a19d;
+  background-color: #bc6886;
+  border-color: #c46d8c;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #558985;
-  border-color: #50817e;
+  background-color: #a35b74;
+  border-color: #a35b74;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
-  background-color: #558985;
-  border-color: #50817e;
+  background-color: #a35b74;
+  border-color: #a35b74;
   box-shadow: 0 0 0 0.25rem rgba(123, 175, 172, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #50817e;
-  border-color: #4b7976;
+  background-color: #8a4e63;
+  border-color: #a35b74;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(123, 175, 172, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #64a19d;
-  border-color: #64a19d;
+  background-color: #a35b74;
+  border-color: #a35b74;
 }
 
 .btn-secondary {
@@ -8025,7 +8032,22 @@ textarea.form-control-lg {
 
 .bg-black {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important; 
+}
+
+.bg-navy {
+  --bs-bg-opacity: 1;
+  background-color: #161131 !important; 
+}
+
+.bg-purp1 {
+  --bs-bg-opacity: 1;
+  background-color: rgb(154,56,112, 0.4) !important;
+}
+
+.bg-purp2 {
+  --bs-bg-opacity: 1;
+  background-color: rgb(138,50,100, 0.7) !important;
 }
 
 .bg-white {
@@ -11474,20 +11496,21 @@ body {
 
 #mainNav {
   min-height: 3.5rem;
-  background-color: #fff;
+  background-color: rgb(254,252,240, 0.9);
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
   padding: 0.75rem;
-  color: #64a19d;
-  border: 1px solid #64a19d;
+  color: #bc6886;
+  border: 1px solid #bc6886;
 }
 #mainNav .navbar-toggler:focus {
   outline: none;
 }
 #mainNav .navbar-brand {
-  color: #000;
+  color: #2A205E;
   font-weight: 700;
+  font-size: 25px;
   padding: 0.9rem 0;
 }
 #mainNav .navbar-nav .nav-item:hover {
@@ -11509,24 +11532,24 @@ body {
   }
   #mainNav .navbar-brand {
     padding: 0.5rem 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(254,252,240, 0.5);
   }
   #mainNav .nav-link {
     transition: none;
     padding: 2rem 1.5rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(254,252,240, 0.5);
   }
   #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgb(254,252,240, 0.75);
   }
   #mainNav .nav-link:active {
     color: #fff;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color: rgb(254,252,240, 0.9);
   }
   #mainNav.navbar-shrink .navbar-brand {
-    color: #000;
+    color: #2A205E;
   }
   #mainNav.navbar-shrink .nav-link {
     color: #000;
@@ -11534,15 +11557,15 @@ body {
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #64a19d;
+    color: #BC6886;
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: #BC6886;
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
+    color: #BC6886;
     outline: none;
-    border-bottom: 0.25rem solid #64a19d;
+    border-bottom: 0.25rem solid #BC6886;
   }
 }
 
@@ -11562,18 +11585,19 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 20%, rgba(22, 17, 49, 0.9) 100%, #000 100%), url("../assets/img/background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 .masthead h1, .masthead .h1 {
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Lombok", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
+  font-weight: 500;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  background: linear-gradient(rgba(255, 255, 255, 255), rgba(255, 255, 255, 0.1));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
           background-clip: text;
@@ -11605,8 +11629,9 @@ body {
 }
 
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  padding: 7rem;
+  /* background: linear-gradient(to bottom, #000 0%, rgba(58, 30, 66, 0.99) 80%, rgba(58, 30, 66, 0.85) 100%); */
+  background: #231537;
 }
 .about-section p {
   margin-bottom: 5rem;
@@ -11614,14 +11639,16 @@ body {
 
 .projects-section {
   padding: 10rem 0;
+  background-color: #140F2C !important;
 }
 .projects-section .featured-text {
   padding: 2rem;
+  color: #FDFBED;
 }
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+    border-left: 0.5rem solid #bc6886;
   }
 }
 .projects-section .project-text {
@@ -11633,21 +11660,55 @@ body {
     padding: 5rem;
   }
   .projects-section .project-text hr {
-    border-color: #64a19d;
+    border-color: #bc6886;
     border-width: 0.25rem;
     width: 30%;
   }
 }
 
+
 .signup-section {
-  padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
+  padding: 3rem 0; 
+  padding-bottom: 100px;
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg"); */
+  /* background-color: rgb(65,23,55); */
+  background: linear-gradient(to bottom, rgba(20, 15, 44, 255) 10%, rgb(65, 23, 55, 0.9) 65%);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
-.signup-section .form-signup input {
+
+#tutorial {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+
+#tutorial iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#sub-title {
+  font-size: 55px;
+}
+
+.footer {
+  padding: 2.5rem 0;
+}
+
+.mx-auto{
+  padding: 7px;
+}
+
+
+
+/* .signup-section .form-signup input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;
@@ -11693,8 +11754,5 @@ body {
 }
 .contact-section .social a:active {
   color: #fff;
-}
+} */
 
-.footer {
-  padding: 5rem 0;
-}
