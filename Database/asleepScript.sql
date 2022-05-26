@@ -1,0 +1,63 @@
+SET NAMES utf8mb4;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+DROP SCHEMA IF EXISTS asleep_db;
+CREATE SCHEMA asleep_db;
+USE asleep_db;
+
+CREATE TABLE users(
+  id_user INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(45) NOT NULL,
+  user_password VARCHAR(45) NOT NULL,
+  num_levels_created INT NOT NULL,
+  PRIMARY KEY (id_user)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE user_log(
+    id_user_log INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL, # foreign key
+    first_connection TIMESTAMP NOT NULL,
+    last_connection TIMESTAMP NOT NULL,
+    PRIMARY KEY (id_user_log),
+    KEY idx_fk_user_id (id_user),
+	CONSTRAINT `fk_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE levels(
+    id_level INT NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL, #esta es la foreign key
+    level_name VARCHAR(255) NOT NULL,
+    level_file BLOB NOT NULL,
+    level_time INT NOT NULL,
+    num_times_played INT NOT NULL COMMENT 'contador',
+    num_items INT NOT NULL,
+    PRIMARY KEY (id_level),
+    KEY idx_fk_user_id (id_user),
+	CONSTRAINT `fk_level_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE ratings(
+	id_rating INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL, #foreign key
+    id_level INT NOT NULL, #foreign key
+    rating DECIMAL NOT NULL COMMENT '1-5',
+    PRIMARY KEY (id_rating),
+    KEY idx_fk_user_id (id_user),
+    CONSTRAINT `fk_rating_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user),
+	KEY idx_fk_level_id (id_level),
+	CONSTRAINT `fk_rating_id_level` FOREIGN KEY (id_level) REFERENCES levels(id_level)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE game_play(
+    id_game_play INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_user INT NOT NULL, #foreign key
+    id_level INT NOT NULL, #foreign key
+    time_elapsed INT NOT NULL,
+    PRIMARY KEY (id_game_play),
+    KEY idx_fk_user_id (id_user),
+    CONSTRAINT `fk_game_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user),
+	KEY idx_fk_level_id (id_level),
+	CONSTRAINT `fk_game_id_level` FOREIGN KEY (id_level) REFERENCES levels(id_level)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
