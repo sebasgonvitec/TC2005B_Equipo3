@@ -34,7 +34,7 @@ CREATE TABLE ratings(
 	id_rating INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL, #foreign key
     id_level INT NOT NULL, #foreign key
-    rating DECIMAL NOT NULL COMMENT '1-5',
+    rating FLOAT NOT NULL COMMENT '1-5',
     PRIMARY KEY (id_rating),
     KEY idx_fk_user_id (id_user),
     CONSTRAINT `fk_rating_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user),
