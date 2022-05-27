@@ -8,48 +8,34 @@ USE asleep_db;
 
 -- Dummy data for table users
 SET AUTOCOMMIT=0;
-INSERT INTO users VALUES (1,'supremaciaTopo','eltoposiguevivo', 1),
-(2,'testUser','userTest', 0),
-(3,'user123','computadora', 0),
-(4,'wtfIsAsleep','wtfIsRemi', 0),
-(5,'carlitos','clavoUnClavito', 3),
-(6,'Topo','quieroUnTopo', 0),
-(7,'tigres','tragaronTrigo', 5),
-(8,'andy1D','teamo1D', 2),
-(9,'JiminMiVaron','BTS2002', 2),
-(10,'Akemi', 'soyracista', 1);
-COMMIT;
-
--- Dummy data for user log
-SET AUTOCOMMIT=0;
-INSERT INTO user_log VALUES (1, 1,'2022-05-21 11:34:22', '2022-05-23 19:43:47'),
-(2, 2, '2022-05-23 13:43:47', '-'),
-(3, 3, '2022-05-23 17:02:56', '2022-06-19 9:29:52'),
-(4, 4, '2022-05-26 10:29:18', '-'),
-(5, 5, '2022-05-27 16:18:06', '2022-06-08 13:01:47'),
-(6, 6, '2022-05-27 20:26:01', '-'),
-(7, 7, '2022-05-27 18:56:57', '2022-06-14 22:16:20'),
-(8, 8, '2022-06-03 15:45:51', '2022-06-06 23:06:24'),
-(9, 9, '2022-06-04 00:33:11', '2022-06-09 16:37:43'),
-(10, 10, '2022-06-04 09:34:33', '2022-06-04 08:35:23');
+INSERT INTO users VALUES (1,'supremaciaTopo','eltoposiguevivo', 1, '2022-05-21 11:34:22', '2022-05-23 19:43:47'), 
+(2,'testUser','userTest', 0, '2022-05-23 13:43:47', '2022-05-23 13:43:47'),
+(3,'user123','computadora', 0, '2022-05-23 17:02:56', '2022-06-19 9:29:52'),
+(4,'wtfIsAsleep','wtfIsRemi', 0, '2022-05-26 10:29:18', '2022-05-26 10:29:18'),
+(5,'carlitos','clavoUnClavito', 3, '2022-05-27 16:18:06', '2022-06-08 13:01:47'),
+(6,'Topo','quieroUnTopo', 0, '2022-05-27 20:26:01', '2022-05-27 20:26:01'),
+(7,'tigres','tragaronTrigo', 5, '2022-05-27 18:56:57', '2022-06-14 22:16:20'),
+(8,'andy1D','teamo1D', 2, '2022-06-03 15:45:51', '2022-06-06 23:06:24'),
+(9,'JiminMiVaron','BTS2002', 2, '2022-06-04 00:33:11', '2022-06-09 16:37:43'),
+(10,'Akemi', 'soyracista', 1, '2022-06-04 09:34:33', '2022-06-04 08:35:23');
 COMMIT;
 
 -- Dummy data for levels
 SET AUTOCOMMIT=0;
-INSERT INTO levels VALUES (1, 1, 'Donde esta el topo', archivo.txt, 120, 2, 150), 
-(2, 5, 'New level', archivo.txt, 90, 0, 176), 
-(3, 5, '3 stories level', archivo.txt, 150, 1, 224), 
-(4, 7, 'Nivel 1: Facil', archivo.txt, 120, 1, 134),
-(5, 7, 'Nivel 2: Dif Media', archivo.txt, 150, 0, 194),  
-(6, 5, 'Sprint level', archivo.txt, 100, 1, 188), 
-(7, 7, 'Nivel 3: Avanzado', archivo.txt, 120, 0, 189), 
-(8, 7, 'Nivel 4: Difícil', archivo.txt, 90, 0, 197), 
-(9, 7, 'Nivel 5: Nightmare', archivo.txt, 45, 0, 210), 
-(10, 8, 'Basic', archivo.txt, 120, 0, 157), 
-(11, 9, 'New Level', archivo.txt, 200, 1, 340), 
-(12, 9, 'Nivel Laberinto', archivo.txt, 180, 3, 427), 
-(13, 8, 'Nightmare', archivo.txt, 30, 2, 124), 
-(14, 10, 'New Level', archivo.txt, 100, 1, 114);
+INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"ArchivoBLOB.bin", 120, 2, 150), 
+(2, 5, 'New level', "ArchivoBLOB.bin", 90, 0, 176), 
+(3, 5, '3 stories level', "ArchivoBLOB.bin", 150, 1, 224), 
+(4, 7, 'Nivel 1: Facil', "ArchivoBLOB.bin", 120, 1, 134),
+(5, 7, 'Nivel 2: Dif Media', "ArchivoBLOB.bin", 150, 0, 194),  
+(6, 5, 'Sprint level', "ArchivoBLOB.bin", 100, 1, 188), 
+(7, 7, 'Nivel 3: Avanzado', "ArchivoBLOB.bin", 120, 0, 189), 
+(8, 7, 'Nivel 4: Difícil', "ArchivoBLOB.bin", 90, 0, 197), 
+(9, 7, 'Nivel 5: Nightmare', "ArchivoBLOB.bin", 45, 0, 210), 
+(10, 8, 'Basic', "ArchivoBLOB.bin", 120, 0, 157), 
+(11, 9, 'New Level', "ArchivoBLOB.bin", 200, 1, 340), 
+(12, 9, 'Nivel Laberinto', "ArchivoBLOB.bin", 180, 3, 427), 
+(13, 8, 'Nightmare', "ArchivoBLOB.bin", 30, 2, 124), 
+(14, 10, 'New Level', "ArchivoBLOB.bin", 100, 1, 114);
 COMMIT;
 
 -- Dummy data for ratings

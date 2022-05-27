@@ -12,17 +12,9 @@ CREATE TABLE users(
   username VARCHAR(45) NOT NULL,
   user_password VARCHAR(45) NOT NULL,
   num_levels_created INT NOT NULL,
+  first_connection TIMESTAMP NOT NULL,
+  last_connection TIMESTAMP NOT NULL,
   PRIMARY KEY (id_user)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE user_log(
-    id_user_log INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    id_user INT NOT NULL, # foreign key
-    first_connection TIMESTAMP NOT NULL,
-    last_connection TIMESTAMP NOT NULL,
-    PRIMARY KEY (id_user_log),
-    KEY idx_fk_user_id (id_user),
-	CONSTRAINT `fk_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE levels(
@@ -39,7 +31,7 @@ CREATE TABLE levels(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE ratings(
-	id_rating INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	id_rating INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL, #foreign key
     id_level INT NOT NULL, #foreign key
     rating DECIMAL NOT NULL COMMENT '1-5',
@@ -51,7 +43,7 @@ CREATE TABLE ratings(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE game_play(
-    id_game_play INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_game_play INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL, #foreign key
     id_level INT NOT NULL, #foreign key
     time_elapsed INT NOT NULL,
