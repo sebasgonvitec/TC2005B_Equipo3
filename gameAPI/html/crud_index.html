@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/crud.css">
+    <script type="module" defer src="../js/useCases.js"></script>
+    <title>Asleep CRUD</title>
+</head>
+<body>
+
+    <!-- TABLE: Users -->
+
+    <!-- Get/Select Section  -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Show Users</h1>
+            <form id="formSelectUser">
+                <input type="text" name="id_user" placeholder="Type User id, or nothing to show all of them">
+                <input type="submit" value="Show Users">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p>When the request ends, the result will be displayed here.</p>
+            <div id="getResultsIDUser"></div>
+        </div>
+    </div>
+
+
+    <!-- Post/Insert Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Add User</h1>
+            <form id="formInsertUser" method="post" action="http://localhost:5000/api/users">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="user_password" placeholder="Password">
+                <input type="text" name="first_connection" placeholder="First Connection">
+                <input type="text" name="last_connection" placeholder="Last Connection">
+                <input type="submit" value="Add User">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="postResultsUser">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Put/Update Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Update User</h1>
+            <form id="formUpdateUser" method="put">
+                <input type="text" name="id_user" placeholder="Type a user ID">
+                <input type="text" name="username" placeholder="New Username">
+                <input type="text" name="user_password" placeholder="New Password">
+                <input type="text" name="num_levels_created" placeholder="New number of levels created">
+                <input type="text" name="first_connection" placeholder="New First Connection">
+                <input type="text" name="last_connection" placeholder="New Last Connection">
+                <input type="submit" value="Update User">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="putResultsUser">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Delete Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Delete User</h1>
+            <form id="formDeleteUser" method="delete">
+                <input type="text" name="id_user" placeholder="Type a user id">
+                <input type="submit" value="Delete User">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="deleteResultsUser">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- TABLE: Levels -->
+
+    <!-- Get/Select Section  -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Show Levels</h1>
+            <form id="formSelectLevels">
+                <input type="text" name="id_level" placeholder="Type a level id, or nothing to show all of them">
+                <input type="submit" value="Show Level">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p>When the request ends, the result will be displayed here.</p>
+            <div id="getResultsIDLevels"></div>
+        </div>
+    </div>
+
+    <!-- Post/Insert Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Add Level</h1>
+            <form id="formInsertLevels" method="post" action="http://localhost:5000/api/levels">
+                <input type="text" name="id_user" placeholder="User id">
+                <input type="text" name="level_name" placeholder="Level Name">
+                <input type="text" name="level_file" placeholder="Level File">
+                <input type="text" name="level_time" placeholder="Level Time">
+                <input type="text" name="num_times_played" placeholder="Number of times played">
+                <input type="text" name="num_items" placeholder="Number items">
+                <input type="submit" value="Add Level">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="postResultsLevels">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Put/Update Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Update Level</h1>
+            <form id="formUpdateLevels" method="put">
+                <input type="text" name="id_level" placeholder="Type a level ID">
+                <input type="text" name="id_user" placeholder="New user ID">
+                <input type="text" name="level_name" placeholder="Level Name">
+                <input type="text" name="level_file" placeholder="Level File">
+                <input type="text" name="level_time" placeholder="Level Time">
+                <input type="text" name="num_times_played" placeholder="Number of times played">
+                <input type="text" name="num_items" placeholder="Number items">
+                <input type="submit" value="Update Level">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="putResultsLevels">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Delete Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Delete Level</h1>
+            <form id="formDeleteLevels" method="delete">
+                <input type="text" name="id_level" placeholder="Type a level id">
+                <input type="submit" value="Delete Level">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="deleteResultsLevels">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+
+    <!-- TABLE: Ratings -->
+
+    <!-- Get/Select Section  -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Show Ratings</h1>
+            <form id="formSelectRatings">
+                <input type="text" name="id_rating" placeholder="Type a rating id, or nothing to show all of them">
+                <input type="submit" value="Show Rating">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p>When the request ends, the result will be displayed here.</p>
+            <div id="getResultsIDRatings"></div>
+        </div>
+    </div>
+
+
+    <!-- Post/Insert Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Add Rating</h1>
+            <form id="formInsertRatings" method="post" action="http://localhost:5000/api/ratings">
+                <input type="text" name="id_user" placeholder="User id">
+                <input type="text" name="id_level" placeholder="Level id">
+                <input type="text" name="rating" placeholder="Rating">
+                <input type="submit" value="Add Rating">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="postResultsRatings">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Put/Update Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Update Rating</h1>
+            <form id="formUpdateRatings" method="put">
+                <input type="text" name="id_rating" placeholder="Type a rating ID">
+                <input type="text" name="id_user" placeholder="New user ID">
+                <input type="text" name="id_level" placeholder="New level ID">
+                <input type="text" name="rating" placeholder="New Rating">
+                <input type="submit" value="Update Rating">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="putResultsRatings">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Delete Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Delete Rating</h1>
+            <form id="formDeleteRatings" method="delete">
+                <input type="text" name="id_rating" placeholder="Type a rating id">
+                <input type="submit" value="Delete Rating">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="deleteResultsRatings">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+
+
+
+    <!-- TABLE: Gameplays -->
+
+    <!-- Get/Select Section  -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Show Gameplays</h1>
+            <form id="formSelectGameplays">
+                <input type="text" name="id_gameplay" placeholder="Type a gameplay id, or nothing to show all of them">
+                <input type="submit" value="Show Gameplay">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p>When the request ends, the result will be displayed here.</p>
+            <div id="getResultsIDGameplays"></div>
+        </div>
+    </div>
+
+
+    <!-- Post/Insert Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Add Gameplay</h1>
+            <form id="formInsertGameplays" method="post" action="http://localhost:5000/api/gameplays">
+                <input type="text" name="id_user" placeholder="User id">
+                <input type="text" name="id_level" placeholder="Level id">
+                <input type="text" name="time_elapsed" placeholder="Time elapsed">
+                <input type="submit" value="Add Gameplay">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="postResultsGameplays">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Put/Update Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Update Gameplay</h1>
+            <form id="formUpdateGameplays" method="put">
+                <input type="text" name="id_gameplay" placeholder="Type a gameplay ID">
+                <input type="text" name="id_user" placeholder="New user ID">
+                <input type="text" name="id_level" placeholder="New level ID">
+                <input type="text" name="time_elapsed" placeholder="New Time Elapsed">
+                <input type="submit" value="Update Gameplay">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="putResultsGameplays">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+    <!-- Delete Section -->
+    <div class="section">
+        <div class="formInput">
+            <h1>Delete Gameplay</h1>
+            <form id="formDeleteGameplays" method="delete">
+                <input type="text" name="id_gameplay" placeholder="Type a gameplay id">
+                <input type="submit" value="Delete Gameplay">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p id="deleteResultsGameplays">When the request ends, the result will be displayed here.</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
