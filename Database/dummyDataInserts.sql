@@ -22,20 +22,20 @@ COMMIT;
 
 -- Dummy data for levels
 SET AUTOCOMMIT=0;
-INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"ArchivoBLOB.bin", 120, 2, 150), 
-(2, 5, 'New level', "ArchivoBLOB.bin", 90, 0, 176), 
-(3, 5, '3 stories level', "ArchivoBLOB.bin", 150, 1, 224), 
-(4, 7, 'Nivel 1: Facil', "ArchivoBLOB.bin", 120, 1, 134),
-(5, 7, 'Nivel 2: Dif Media', "ArchivoBLOB.bin", 150, 0, 194),  
-(6, 5, 'Sprint level', "ArchivoBLOB.bin", 100, 1, 188), 
-(7, 7, 'Nivel 3: Avanzado', "ArchivoBLOB.bin", 120, 0, 189), 
-(8, 7, 'Nivel 4: Difícil', "ArchivoBLOB.bin", 90, 0, 197), 
-(9, 7, 'Nivel 5: Nightmare', "ArchivoBLOB.bin", 45, 0, 210), 
-(10, 8, 'Basic', "ArchivoBLOB.bin", 120, 0, 157), 
-(11, 9, 'New Level', "ArchivoBLOB.bin", 200, 1, 340), 
-(12, 9, 'Nivel Laberinto', "ArchivoBLOB.bin", 180, 3, 427), 
-(13, 8, 'Nightmare', "ArchivoBLOB.bin", 30, 2, 124), 
-(14, 10, 'New Level', "ArchivoBLOB.bin", 100, 1, 114);
+INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"ArchivoBLOB.bin", 120, 150), 
+(2, 5, 'New level', "ArchivoBLOB.bin", 90, 176), 
+(3, 5, '3 stories level', "ArchivoBLOB.bin", 150, 224), 
+(4, 7, 'Nivel 1: Facil', "ArchivoBLOB.bin", 120, 134),
+(5, 7, 'Nivel 2: Dif Media', "ArchivoBLOB.bin", 150, 194),  
+(6, 5, 'Sprint level', "ArchivoBLOB.bin", 100, 188), 
+(7, 7, 'Nivel 3: Avanzado', "ArchivoBLOB.bin", 120, 189), 
+(8, 7, 'Nivel 4: Difícil', "ArchivoBLOB.bin", 90, 197), 
+(9, 7, 'Nivel 5: Nightmare', "ArchivoBLOB.bin", 45, 210), 
+(10, 8, 'Basic', "ArchivoBLOB.bin", 120, 157), 
+(11, 9, 'New Level', "ArchivoBLOB.bin", 200, 340), 
+(12, 9, 'Nivel Laberinto', "ArchivoBLOB.bin", 180, 427), 
+(13, 8, 'Nightmare', "ArchivoBLOB.bin", 30, 124), 
+(14, 10, 'New Level', "ArchivoBLOB.bin", 100, 114);
 COMMIT;
 
 -- Dummy data for ratings
@@ -54,9 +54,9 @@ INSERT INTO ratings VALUES (1, 1, 1, 5.0),  #id, user id, level id, rating
 (12, 10, 12, 4.9);
 COMMIT;
 
--- Dummy data for game play
+-- Dummy data for gameplay
 SET AUTOCOMMIT=0;
-INSERT INTO game_play VALUES (1, 1, 1, 170),  #id, user id, level id, time elapsed 
+INSERT INTO gameplays VALUES (1, 1, 1, 170),  #id, user id, level id, time elapsed 
 (2, 1, 4, 120), 
 (3, 7, 1, 154), 
 (4, 7, 3, 200), 
