@@ -264,12 +264,11 @@ app.put('/api/levels', async (request, response)=>{
 
     try{
         connection = await connectToDB()
-        const [results, fields] = await connection.query('update levels set id_user= ?, level_name= ?, level_file= ?, level_time= ?, num_times_played= ?, num_items= ? where id_level= ?', 
+        const [results, fields] = await connection.query('update levels set id_user= ?, level_name= ?, level_file= ?, level_time= ?, num_items= ? where id_level= ?', 
         [request.body['id_user'], 
         request.body['level_name'],
         request.body['level_file'], 
         request.body['level_time'],
-        request.body['num_times_played'],
         request.body['num_items'],
         request.body['id_level']])
 
