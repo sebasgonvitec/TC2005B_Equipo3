@@ -4,8 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Teleporter
-  - Key
+  - PortalPurple
+  - DreamCatcherPurple
+  - DreamCatcherPurpleImage
+  - GameCanvas
+  - PortalGreen
+  - DreamCatcherGreen
+  - PortalGoal
+  - LeverPurple
+  - DoorPurple
+  - SlideBlockOpen
+  - Imer
   layers:
   - Default
   - TransparentFX
@@ -13,11 +22,11 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - Ground
   - Boxes
-  - 
-  - 
-  - 
+  - Backgorund
+  - DefaultGround
   - 
   - 
   - 
@@ -40,15 +49,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 266576603
-    locked: 0
-  - name: Midground
-    uniqueID: 2862606313
-    locked: 0
-  - name: Foreground
-    uniqueID: 1443593803
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 895218733
+    locked: 0
+  - name: Ground
+    uniqueID: 127293683
+    locked: 0
+  - name: Boxes
+    uniqueID: 637228839
+    locked: 0
+  - name: Levers
+    uniqueID: 3892835997
+    locked: 0
+  - name: Portals
+    uniqueID: 374400685
+    locked: 0
+  - name: Player
+    uniqueID: 2998187735
+    locked: 0
+  - name: Maker
+    uniqueID: 728286145
     locked: 0
