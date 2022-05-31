@@ -12,8 +12,8 @@ CREATE TABLE users(
   username VARCHAR(45) NOT NULL,
   user_password VARCHAR(45) NOT NULL,
   num_levels_created INT NOT NULL default 0,
-  first_connection TIMESTAMP NOT NULL,
-  last_connection TIMESTAMP NOT NULL,
+  first_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_connection TIMESTAMP DEFAULT NULL,
   PRIMARY KEY (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

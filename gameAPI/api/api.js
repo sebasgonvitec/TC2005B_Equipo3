@@ -86,6 +86,35 @@ app.get('/api/users/:id', async (request, response)=>
     }
 })
 
+//Get a user from specific username
+app.get('/api/users/log/:username', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('select * from users where username= ?', [request.params.username])
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+
 //Post for users table
 app.post('/api/users', async (request, response)=>{
 
