@@ -22,20 +22,20 @@ COMMIT;
 
 -- Dummy data for levels
 SET AUTOCOMMIT=0;
-INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"ArchivoBLOB.bin", 120, 150), 
-(2, 5, 'New level', "ArchivoBLOB.bin", 90, 176), 
-(3, 5, '3 stories level', "ArchivoBLOB.bin", 150, 224), 
-(4, 7, 'Nivel 1: Facil', "ArchivoBLOB.bin", 120, 134),
-(5, 7, 'Nivel 2: Dif Media', "ArchivoBLOB.bin", 150, 194),  
-(6, 5, 'Sprint level', "ArchivoBLOB.bin", 100, 188), 
-(7, 7, 'Nivel 3: Avanzado', "ArchivoBLOB.bin", 120, 189), 
-(8, 7, 'Nivel 4: Difícil', "ArchivoBLOB.bin", 90, 197), 
-(9, 7, 'Nivel 5: Nightmare', "ArchivoBLOB.bin", 45, 210), 
-(10, 8, 'Basic', "ArchivoBLOB.bin", 120, 157), 
-(11, 9, 'New Level', "ArchivoBLOB.bin", 200, 340), 
-(12, 9, 'Nivel Laberinto', "ArchivoBLOB.bin", 180, 427), 
-(13, 8, 'Nightmare', "ArchivoBLOB.bin", 30, 124), 
-(14, 10, 'New Level', "ArchivoBLOB.bin", 100, 114);
+INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"0,-25,-21,0<", 120, 150), 
+(2, 5, 'New level', "0,-25,-21,0<0,-26,-21,0<", 90, 176), 
+(3, 5, '3 stories level', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<", 150, 224), 
+(4, 7, 'Nivel 1: Facil', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<", 120, 134),
+(5, 7, 'Nivel 2: Dif Media', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<", 150, 194),  
+(6, 5, 'Sprint level', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<0,-29,-21,0<", 100, 188), 
+(7, 7, 'Nivel 3: Avanzado', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<0,-29,-21,0<0,-30,-21,0<", 120, 189), 
+(8, 7, 'Nivel 4: Difícil', "0,-25,-21,0<", 90, 197), 
+(9, 7, 'Nivel 5: Nightmare', "0,-25,-21,0/0,-26,-21,0<", 45, 210), 
+(10, 8, 'Basic', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<", 120, 157), 
+(11, 9, 'New Level', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<", 200, 340), 
+(12, 9, 'Nivel Laberinto', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<0,-29,-21,0<", 180, 427), 
+(13, 8, 'Nightmare', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<0,-29,-21,0<0,-30,-21,0<", 30, 124), 
+(14, 10, 'New Level', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<0,-28,-21,0<0,-29,-21,0<0,-30,-21,0<0,-31,-21,0<", 100, 114);
 COMMIT;
 
 -- Dummy data for ratings
