@@ -1,3 +1,14 @@
+/*
+ Purple Portal functionality
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 15/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,21 +20,20 @@ public class PurpleTeleporter : MonoBehaviour
 
     public void Update()
     {
-        //if (MakerMode.playMode)
-        //{
-        //    destination = GetOtherPortal();
-        //}
-
+        //Get destination portal
         destination = GetOtherPortal();
     }
+
+    //Getter for destination of portal
     public Transform GetDestination()
     {
-        //destination = portals[0].transform;
         return destination;
     }
 
+    //Function to find other portal and store it in array
     public Transform GetOtherPortal()
     {
+        //Stores Gameobjects with the tag PortalPurple found in the scene
         portals = GameObject.FindGameObjectsWithTag("PortalPurple");
         if (portals[1].transform.position != transform.position)
         {

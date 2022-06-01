@@ -1,12 +1,13 @@
-//Smooth camera movement following player
+/*
+ Smooth camera movement following player during Maker Mode
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
-
+ 13/05/2022
+ 
+ */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -23,15 +24,10 @@ public class SmoothCamera : MonoBehaviour
 
     public int speed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //Camera movement when in Test mode
         if (MakerMode.playMode)
         {
             camera.orthographicSize = 6;
@@ -49,7 +45,7 @@ public class SmoothCamera : MonoBehaviour
 
             transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
         }
-        else
+        else //Camera movement when in Maker Mode
         {
             camera.orthographicSize = 10;
 

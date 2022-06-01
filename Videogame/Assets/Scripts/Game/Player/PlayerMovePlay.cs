@@ -1,11 +1,13 @@
-//Player movement and actions for diabling and enabling it
+/*
+ Player movement and actions for disabling it and enabling it in Play Mode
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 23/05/2022
+ 
+ */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -42,7 +44,6 @@ public class PlayerMovePlay : MonoBehaviour
         LevelGoalPlay.GoalReachedPlay -= DisablePlayerMovementPlay;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
@@ -50,16 +51,17 @@ public class PlayerMovePlay : MonoBehaviour
         EnablePlayerMovementPlay();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //Check if touching ground or box for jumping mechanics
         isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         isTouchingBox = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, boxesLayer);
         direction = Input.GetAxis("Horizontal");
 
-
+        //Restrict movement after touching Imer
         if (paralysis)
         {
+            //Couroutine to wait set amount of seconds
             StartCoroutine(WaitForParalysis());
         }
         else

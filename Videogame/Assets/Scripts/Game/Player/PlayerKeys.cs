@@ -1,3 +1,14 @@
+/*
+ Script to store catched dreamcatchers (Keys)
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 15/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +31,8 @@ public class PlayerKeys : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //Check which Dreamcatcher to catch based on the Tag
+
         if (collision.CompareTag("DreamCatcherPurple"))
         {
             hasPurpleKey = true;

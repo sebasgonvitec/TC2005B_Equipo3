@@ -1,11 +1,13 @@
-//Alternative smooth camera script
+/*
+ Alternative smooth camera script
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 13/05/2022
+ 
+ */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +30,7 @@ public class PlayerCamera : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //Camera control in PlayMode
         if (MakerMode.playMode)
         {
             Camera.current.orthographicSize = 6;
@@ -40,7 +43,7 @@ public class PlayerCamera : MonoBehaviour
 
             transform.position = boundPosition;
         }
-        else
+        else //Camera control in MakerMode
         {
             Camera.current.orthographicSize = 10;
 

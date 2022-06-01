@@ -1,3 +1,14 @@
+/*
+ Script to manage the Maker Mode
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 14/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +17,12 @@ using UnityEngine.UI;
 
 public class MakerMode : MonoBehaviour
 {
+    //Array of blocks available
     public MakerBlock[] blocks;
     public GameObject buttonPrefab;
     public Transform elementBar;
 
+    //Preview sprite
     public SpriteRenderer testSprite;
     int id;
 
@@ -25,7 +38,8 @@ public class MakerMode : MonoBehaviour
     //public GameObject dreamCatcherImage;
 
     void Start()
-    {
+    {   
+        //Generate side bar with all draggable elements
         for (int i = 0; i < blocks.Length; i++)
         {
 
@@ -35,7 +49,9 @@ public class MakerMode : MonoBehaviour
             button.GetComponent<Image>().sprite = blocks[i].blockSprite;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
+                //Set block sprite to preview sprite
                 testSprite.sprite = blocks[u].blockSprite;
+                testSprite.transform.localScale = blocks[u].transform.localScale;
                 id = u;
             });
         }
@@ -67,6 +83,7 @@ public class MakerMode : MonoBehaviour
             pos.x = Mathf.RoundToInt(pos.x);
             pos.y = Mathf.RoundToInt(pos.y);
 
+            //Prevent elements from being placed on top of each other
             if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.D))
             {
                 var i = Physics2D.CircleCast(pos, 0.4f, Vector2.zero);
@@ -75,24 +92,27 @@ public class MakerMode : MonoBehaviour
                     Instantiate(blocks[id], pos, Quaternion.identity);
                 }
             }
+            //Erase elements while pressing key
             else if (Input.GetKey(KeyCode.D))
             {
                 testSprite.sprite = eraseSprite;
+                testSprite.transform.localScale = new Vector3(1f, 1f, 0);
                 if (Input.GetMouseButtonDown(0))
                 {
                     var j = Physics2D.CircleCast(pos, 0.4f, Vector2.zero);
                     if (j.collider != null)
                     {
-                        Debug.Log(j.collider.gameObject);
                         Destroy(j.collider.gameObject);
                     }
                 }
 
             }
+            //Move preview sprite around
             testSprite.transform.position = pos;
      }
           
 
+    //Toggle playMode variable to enter and exit Test Mode in Maker
     public void TogglePlay()
     {
         playMode = !playMode;

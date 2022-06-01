@@ -1742,7 +1742,6 @@ GameObject:
   - component: {fileID: 158914141}
   - component: {fileID: 158914140}
   - component: {fileID: 158914139}
-  - component: {fileID: 158914143}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: GameCanvas
@@ -1837,19 +1836,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &158914143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158914138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff9854f8e12c2345a794738f6eaa75d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1025388046}
 --- !u!1001 &185110001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8408,7 +8394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158914143}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -11786,6 +11772,7 @@ GameObject:
   - component: {fileID: 1994978633}
   - component: {fileID: 1994978634}
   - component: {fileID: 1994978635}
+  - component: {fileID: 1994978636}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -11829,6 +11816,8 @@ MonoBehaviour:
   - {fileID: 357639693302106120, guid: 9145efa62f98ab24792460f7a4b05de8, type: 3}
   - {fileID: 4591244947927605257, guid: 41e3ebe4b9264d4419f82c733648e184, type: 3}
   - {fileID: 8932700474236666489, guid: c96b791da2095524d8692a6391c88f3f, type: 3}
+  - {fileID: 1650695290697696295, guid: cca254da86ce5d24ab821393edbcd6e5, type: 3}
+  apiTestScript: {fileID: 0}
 --- !u!114 &1994978633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11874,6 +11863,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972f573a6401c4d4d90bb29fe35e9a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1994978636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994978630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23673996fb087984483460a3ec2649ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 1025388046}
 --- !u!1001 &1997811261
 PrefabInstance:
   m_ObjectHideFlags: 0
