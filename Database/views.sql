@@ -20,7 +20,7 @@ CREATE VIEW levels_view AS
 	SELECT username, level_name, level_file, level_time, num_items FROM asleep_db.users INNER JOIN asleep_db.levels 
 	ON users.id_user = levels.id_user 
     ORDER BY num_levels_created DESC;
-SELECT * FROM levels_view;
+SELECT * FROM levels_view; #agregar rating en vez de num_items y cuando se creo, level id
 
 #view de username, nombre del nivel y el rating del nivel ordenado del nivel con mayor rating al menor
 DROP VIEW IF EXISTS levels_rating;

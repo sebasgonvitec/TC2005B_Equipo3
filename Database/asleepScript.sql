@@ -13,7 +13,7 @@ CREATE TABLE users(
   user_password VARCHAR(45) NOT NULL,
   num_levels_created INT NOT NULL DEFAULT 0,
   first_connection TIMESTAMP NOT NULL,
-  last_connection TIMESTAMP NOT NULL,
+  last_connection TIMESTAMP NOT NULL, #!!!!!!!!
   PRIMARY KEY (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -24,6 +24,7 @@ CREATE TABLE levels(
     level_file BLOB NOT NULL,
     level_time INT NOT NULL,
     num_items INT NOT NULL,
+    date_created TIMESTAMP NOT NULL, #agregar cosa a la dummy data y agregar en views 
     PRIMARY KEY (id_level),
     KEY idx_fk_user_id (id_user),
 	CONSTRAINT `fk_level_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user)
