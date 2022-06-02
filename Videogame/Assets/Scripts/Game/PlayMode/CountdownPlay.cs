@@ -1,3 +1,14 @@
+/*
+ Script to manage timer in Play Mode  
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 23/05/2022
+ 
+ */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +17,8 @@ using UnityEngine.UI;
 
 public class CountdownPlay : MonoBehaviour
 {
-    private float timeStart = LevelLoader.levelTime;
+    //Set level time from Level info (from DB)
+    private float timeStart;
     public Text textbox;
     public Text finalTimeText;
 
@@ -14,6 +26,7 @@ public class CountdownPlay : MonoBehaviour
     public float finalfinalTime;
     public string finalTime;
 
+    //Events for timer start and runOut
     public static event Action OnTimerRunOutPlay;
     public static event Action OnTimerStartPlay;
 
@@ -30,42 +43,42 @@ public class CountdownPlay : MonoBehaviour
     }
     void Start()
     {
+        timeStart = PlayerPrefs.GetInt("levelTime");
         textbox.enabled = true;
         initialTime = timeStart;
         OnTimerStartPlay?.Invoke();
-        //textbox.text = timeStart.ToString();
-        //Se obtiene el tiempo de la base de datos y se inserta aqui
-        //timeStart = ReadTimer.input;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (timeStart <= 0.5f)
         {
             StopTimer();
             OnTimerRunOutPlay?.Invoke();
-            
-           
         }
-        else
+        else 
         {
+            //Substracts time passed to timeStart
             timeStart -= Time.deltaTime;
+            //Format time to be displayed nicely
             int minutes = Mathf.FloorToInt(timeStart / 60F);
             int seconds = Mathf.FloorToInt(timeStart - minutes * 60);
             string niceTime = string.Format("{0:00}:{1:00}", minutes, seconds);
             finalTime = niceTime;
 
+            //Update timer in UI
             textbox.text = niceTime;
         }
     }
 
+    //Actually freeze timer
     public void StopTimer()
     {
         textbox.enabled = false;
         finalTimeText.text = finalTime;
     }
 
+    //Calculate the time elapsed and display it nicely
     public string getFinalTime()
     {
         finalfinalTime = initialTime - timeStart;

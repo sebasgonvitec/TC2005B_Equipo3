@@ -1,11 +1,14 @@
-//Reaching goal
+/*
+ Reaching Portal Goal in Maker Mode
+ *Almost useless now*
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 26/05/2022
+ 
+ */
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,29 +19,16 @@ public class LevelGoal : MonoBehaviour
 {
     [SerializeField] Text endMessage;
 
-    public static event Action GoalReached; //Mostrar pantalla level passed con este evento
-
-    private void Start()
-    {
-        //levelPassed = false;
-    }
+    public static event Action GoalReached;
 
     void OnTriggerEnter2D(Collider2D col)
     {
 
         if (col.CompareTag("Player"))
         {
-            //endMessage.text = "GOAL REACHED!!";
-            GoalReached?.Invoke();
-            //levelPassed = true;
-            //Invoke("ChangeScene", 1);
+            GoalReached?.Invoke();     
         }
 
 
     }
-
-    //void ChangeScene()
-    //{
-    //    SceneManager.LoadScene("WinScene");
-    //}
 }

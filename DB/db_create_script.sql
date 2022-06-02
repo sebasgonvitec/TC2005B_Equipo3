@@ -21,7 +21,7 @@ CREATE TABLE levels(
     id_level INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL, #esta es la foreign key
     level_name VARCHAR(255) NOT NULL,
-    level_file BLOB NOT NULL,
+    level_file TEXT NOT NULL,
     level_time INT NOT NULL,
     num_items INT NOT NULL,
     PRIMARY KEY (id_level),

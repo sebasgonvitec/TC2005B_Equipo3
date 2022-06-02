@@ -1,11 +1,14 @@
-//Player movement and actions for diabling and enabling it
+/*
+ Player movement and actions for disabling it and enabling it in Maker Mode
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 13/05/2022
+ 
+ */
+
 
 using System.Collections;
 using System.Collections.Generic;
@@ -32,17 +35,15 @@ public class PlayerMove : MonoBehaviour
 
     private void OnEnable()
     {
-        //Countdown.OnTimerRunOut += DisablePlayerMovement;
         LevelGoal.GoalReached += DisablePlayerMovement;
     }
 
     private void OnDisable()
     {
-        //Countdown.OnTimerRunOut -= DisablePlayerMovement;
         LevelGoal.GoalReached -= DisablePlayerMovement;
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
@@ -50,18 +51,22 @@ public class PlayerMove : MonoBehaviour
         EnablePlayerMovement();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //If not on Test Mode do nothing
         if (!MakerMode.playMode)
             return;
 
+        //Check if touching ground or box for jumping mechanics
         isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         isTouchingBox = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, boxesLayer);
         direction = Input.GetAxis("Horizontal");
 
+        //Restrict movement after touching Imer
         if (paralysis)
         {
+            //Couroutine to wait set amount of seconds
             StartCoroutine(WaitForParalysis());
         }
         else
@@ -97,18 +102,21 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    //Disable animations and set velocity to zero
     private void DisablePlayerMovement()
     {
         playerAnimation.enabled = false;
         player.velocity = new Vector2(0f, 0f);
     }
 
+    //Enable animations and return velocity
     private void EnablePlayerMovement()
     {
         playerAnimation.enabled = true;
         player.bodyType = RigidbodyType2D.Dynamic;
     }
 
+    //Check if you have touched Imer
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Imer"))
@@ -117,6 +125,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    //Paralysis for 3 seconds after touching Imer
     IEnumerator WaitForParalysis()
     {
         DisablePlayerMovement();

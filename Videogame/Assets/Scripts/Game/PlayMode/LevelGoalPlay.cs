@@ -1,11 +1,13 @@
-//Reaching goal
+/*
+ Reaching Level Goal functionality in Play Mode
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 24/05/2022
+ 
+ */
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,30 +17,16 @@ using System;
 public class LevelGoalPlay : MonoBehaviour
 {
 
-    public static event Action GoalReachedPlay; //Mostrar pantalla level passed con este evento
-    //public static bool levelPassed;
+    //Event to be triggered when Goal is Reached
+    public static event Action GoalReachedPlay;
 
-    private void Start()
-    {
-        //levelPassed = false;
-    }
-
+    //If Player enters Goal Portal Invoke 
     void OnTriggerEnter2D(Collider2D col)
     {
 
         if (col.CompareTag("Player"))
         {
-            //endMessage.text = "GOAL REACHED!!";
             GoalReachedPlay?.Invoke();
-            //levelPassed = true;
-            //Invoke("ChangeScene", 1);
         }
-
-
     }
-
-    //void ChangeScene()
-    //{
-    //    SceneManager.LoadScene("WinScene");
-    //}
 }
