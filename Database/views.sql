@@ -17,10 +17,12 @@ SELECT * FROM user_log;
 #view del username, con las especificaciones del nivel, sin las ids ordenados del usuario con más niveles creados a menos
 DROP VIEW IF EXISTS levels_view;
 CREATE VIEW levels_view AS
-	SELECT username, level_name, level_file, level_time, num_items FROM asleep_db.users INNER JOIN asleep_db.levels 
-	ON users.id_user = levels.id_user 
+	SELECT username, id_level, level_name, level_file, date_created, rating FROM asleep_db.users INNER JOIN asleep_db.levels 
+		ON users.id_user = levels.id_user 
+	INNER JOIN asleep_db.ratings
+		ON levels.id_level = ratings.id_level
     ORDER BY num_levels_created DESC;
-SELECT * FROM levels_view; #agregar rating en vez de num_items y cuando se creo, level id
+SELECT * FROM levels_view; 
 
 #view de username, nombre del nivel y el rating del nivel ordenado del nivel con mayor rating al menor
 DROP VIEW IF EXISTS levels_rating;
