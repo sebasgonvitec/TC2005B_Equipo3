@@ -1,3 +1,14 @@
+/*
+ Smooth camera movement following player during Play Mode
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 20/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +23,6 @@ public class SmoothCameraPlay : MonoBehaviour
     private Vector3 playerPosition;
 
     public int speed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

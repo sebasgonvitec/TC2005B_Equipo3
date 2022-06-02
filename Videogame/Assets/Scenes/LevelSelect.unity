@@ -365,6 +365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d69ae5fb97fee544b677d0517b9b937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  apiTestScript: {fileID: 0}
+  levelPathCopy: C:\Users\sebas\Documents\4to Semestre\Construccion de Software\Videojuegos\saved_levels\third_test2.bin
+  levelString: 
 --- !u!1 &1641297670
 GameObject:
   m_ObjectHideFlags: 0

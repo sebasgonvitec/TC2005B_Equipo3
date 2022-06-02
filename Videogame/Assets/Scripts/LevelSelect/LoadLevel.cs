@@ -1,3 +1,14 @@
+/*
+ Script to Read File of level and Instantiate the block into the scene
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 26/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,40 +22,35 @@ using System.IO;
 
 public class LoadLevel : MonoBehaviour
 {
-
+    //Array of blocks available to build the level
     public GameObject[] availableBlocks;
 
     MakerBlock[] blocks;
-    // Start is called before the first frame update
+    
+    //Load level on Start
     void Start()
     {
-        //OnLoad(LevelLoader.levelPath);
+        OnLoadAlt(PlayerPrefs.GetString("levelString"));
     }
 
-    public void OnLoad(string levelPath)
+    //Function to load elements from string into the level
+    public void OnLoadAlt(string levelString)
     {
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(
-            levelPath,
-            FileMode.Open,
-            FileAccess.Read,
-            FileShare.Read);
-        var obj = (Block[])formatter.Deserialize(stream);
-        stream.Close();
+        string[] blocks = levelString.Split('<');
 
-        Clean();
-
-        for (int i = 0; i < obj.Length; i++)
+        for (int i = 0; i < blocks.Length - 1; i++)
         {
+            string[] finalblock = blocks[i].Split(',');
             Instantiate(
-                availableBlocks[obj[i].id],
+                availableBlocks[int.Parse(finalblock[0])],
                 new Vector3(
-                    obj[i].x,
-                    obj[i].y,
-                    obj[i].z), Quaternion.identity);
+                    float.Parse(finalblock[1]),
+                    float.Parse(finalblock[2]),
+                    float.Parse(finalblock[3])), Quaternion.identity);
         }
     }
 
+    //Destroys all game objects in the scene
     void Clean()
     {
         blocks = GameObject.FindObjectsOfType<MakerBlock>();

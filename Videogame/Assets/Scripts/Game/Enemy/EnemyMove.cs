@@ -1,10 +1,21 @@
+/*
+ Enemy (Imer) movement behaviour
+
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
+
+ 20/05/2022
+ 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-
+    //Defined constants for strings
     const string LEFT = "left";
     const string RIGHT = "right";
      
@@ -20,7 +31,7 @@ public class EnemyMove : MonoBehaviour
 
     Rigidbody2D enemyRigidBody;
     float speed = 2;
-    // Start is called before the first frame update
+    
     void Start()
     {
         baseScale = transform.localScale;
@@ -40,6 +51,7 @@ public class EnemyMove : MonoBehaviour
        
         enemyRigidBody.velocity = new Vector2(vx, enemyRigidBody.velocity.y);
 
+        //Detects wall or end of platform and changes direction
         if (IsHittingWall() || IsNearEdge())
         {
             if(facingDirection == LEFT)
@@ -53,7 +65,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-
+    //Function to change facing direction of Enemy
     void ChangeFacingDirection(string newDirection)
     {
         Vector3 newScale = baseScale;
@@ -72,6 +84,7 @@ public class EnemyMove : MonoBehaviour
         facingDirection = newDirection;
     }
 
+    //
     bool IsHittingWall()
     {
         bool val = false;

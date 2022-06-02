@@ -1,11 +1,13 @@
-//Timer for the level
+/*
+ Timer Script for Test Mode in Maker
 
-// Sebastián González Villacorta
-// A01029746
-// Karla Valeria Mondragón Rosas
-// A01025108
+ Sebastián González Villacorta - A01029746
+ Karla Valeria Mondragón Rosas - A01025108
+ Andreína Isable Sanánez Rico - A01024927
 
-// 13/05/2022
+ 15/05/2022
+ 
+ */
 
 using System;
 using System.Collections;
@@ -15,11 +17,12 @@ using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour
 {
+    //Set level time from Level info (from Maker UI)
     private float timeStart = 0f;
     public Text textbox;
     public Text finalTimeText;
     private string finalTime;
-
+    
     public static event Action OnTimerRunOut;
 
     private void OnEnable()
@@ -42,12 +45,15 @@ public class Countdown : MonoBehaviour
     {
         if (MakerMode.playMode)
         {
+            //Substracts time passed to timeStart
             timeStart -= Time.deltaTime;
+            //Format time to be displayed nicely
             int minutes = Mathf.FloorToInt(timeStart / 60F);
             int seconds = Mathf.FloorToInt(timeStart - minutes * 60);
             string niceTime = string.Format("{0:00}:{1:00}", minutes, seconds);
             finalTime = niceTime;
 
+            //Update timer in UI
             textbox.text = niceTime;
 
             if (timeStart <= 0)
@@ -56,21 +62,17 @@ public class Countdown : MonoBehaviour
             }
         }
         else 
-        {
+        {   
             timeStart = ReadTimer.input;
         }
 
     }
 
+    //Actually freeze timer
     public void StopTimer()
     {
         textbox.enabled = false;
         finalTimeText.text = finalTime;
-    }
-
-    public void ResetTimer()
-    {
-       
     }
 
 }
