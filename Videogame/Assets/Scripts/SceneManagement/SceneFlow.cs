@@ -19,30 +19,17 @@ public class SceneFlow : MonoBehaviour
     //Load Maker Scene
     public void LoadMaker()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     //Load Level Select Scene
     public void LoadLevelSelect()
     {
-        SceneManager.LoadScene(2, LoadSceneMode.Single);
+        SceneManager.LoadScene(5);
     }
 
-    //Load LogSign Scene
-    public void LoadLogSign()
+    public void LoadMenu()
     {
-        SceneManager.LoadScene(4, LoadSceneMode.Single);
-    }
-
-    //Load Login Scene
-    public void LoadLogin()
-    {
-        SceneManager.LoadScene(6, LoadSceneMode.Single);
-    }
-
-    //Load SignIn Scene
-    public void LoadSignIn()
-    {
-        SceneManager.LoadScene(5, LoadSceneMode.Single);
+        SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
 }

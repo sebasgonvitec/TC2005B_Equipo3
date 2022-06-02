@@ -8394,7 +8394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1994978636}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -11817,7 +11817,6 @@ MonoBehaviour:
   - {fileID: 4591244947927605257, guid: 41e3ebe4b9264d4419f82c733648e184, type: 3}
   - {fileID: 8932700474236666489, guid: c96b791da2095524d8692a6391c88f3f, type: 3}
   - {fileID: 1650695290697696295, guid: cca254da86ce5d24ab821393edbcd6e5, type: 3}
-  apiTestScript: {fileID: 0}
 --- !u!114 &1994978633
 MonoBehaviour:
   m_ObjectHideFlags: 0

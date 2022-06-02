@@ -1,5 +1,5 @@
 /*
- Script to Save Levels in .BIN file
+ Script to Upload levels to DB
 
  Sebastián González Villacorta - A01029746
  Karla Valeria Mondragón Rosas - A01025108
@@ -19,6 +19,8 @@ using System.IO;
 
 
 [System.Serializable]
+
+//Creation of Block model to store level buidling blocks
 public struct Block
 {
     public float x, y, z;
@@ -40,72 +42,45 @@ public class SaveLevel : MonoBehaviour
     //Level name from input field
     public GameObject readLevelName;
     private string levelName;
-    private string path;
 
     //Save contents to a string variables
     private string blocksString;
     Block[] serializeBlocksString;
 
     MakerBlock[] blocks;
-    Block[] serializeBlocks;
 
     [SerializeField] string url;
     [SerializeField] string newLevelEP;
 
     //Function to be executed when save button is pressed
-    public void OnSave()
-    {
-        levelName = readLevelName.GetComponent<ReadLevelName>().GetLevelName();
-        //This path will instead be the file to upload to the DB
-        path = $@"C:\Users\sebas\Documents\4to Semestre\Construccion de Software\Videojuegos\saved_levels\{levelName}.bin";
-
-        blocks = GameObject.FindObjectsOfType<MakerBlock>();
-        serializeBlocks = new Block[blocks.Length];
-        for (int i = 0; i < blocks.Length; i++)
-        {
-            serializeBlocks[i] = new Block(
-                blocks[i].transform.position.x,
-                blocks[i].transform.position.y,
-                blocks[i].transform.position.z,
-                blocks[i].id);
-        }
-        //Total number of blocks used in level
-        print(blocks.Length);
-
-        //Serialize (or something) the file
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(
-            path,
-            FileMode.Create,
-            FileAccess.Write,
-            FileShare.None);
-
-        formatter.Serialize(stream, serializeBlocks);
-        stream.Close();
-    }
-
-
     public void OnSaveAlt()
     {
         levelName = readLevelName.GetComponent<ReadLevelName>().GetLevelName();
-        blocks = GameObject.FindObjectsOfType<MakerBlock>();
-        serializeBlocksString = new Block[blocks.Length];
-        for (int i = 0; i < blocks.Length; i++)
-        {
-            serializeBlocksString[i] = new Block(
-                blocks[i].transform.position.x,
-                blocks[i].transform.position.y,
-                blocks[i].transform.position.z,
-                blocks[i].id);
-        }
 
-        for (int j = 0; j < serializeBlocksString.Length; j++)
+        if (levelName == "" || ReadTimer.inputInt == 0)
         {
-            blocksString += serializeBlocksString[j].id.ToString() + "," + serializeBlocksString[j].x.ToString() + "," + serializeBlocksString[j].y.ToString() + "," + serializeBlocksString[j].z.ToString() + "<";
+            Debug.Log("Missing Level Name or Time");
         }
-        //Debug.Log(blocksString);
+        else
+        {
+            blocks = GameObject.FindObjectsOfType<MakerBlock>();
+            serializeBlocksString = new Block[blocks.Length];
+            for (int i = 0; i < blocks.Length; i++)
+            {
+                serializeBlocksString[i] = new Block(
+                    blocks[i].transform.position.x,
+                    blocks[i].transform.position.y,
+                    blocks[i].transform.position.z,
+                    blocks[i].id);
+            }
 
-        InsertNewLevel();
+            for (int j = 0; j < serializeBlocksString.Length; j++)
+            {
+                blocksString += serializeBlocksString[j].id.ToString() + "," + serializeBlocksString[j].x.ToString() + "," + serializeBlocksString[j].y.ToString() + "," + serializeBlocksString[j].z.ToString() + "<";
+            }
+
+            InsertNewLevel();
+        }
     }
 
     public void InsertNewLevel()
@@ -118,8 +93,7 @@ public class SaveLevel : MonoBehaviour
         // Create the object to be sent as json
         NewLevel newLevel = new NewLevel
         {
-            id_user = 1,
-            //newLevel.id_user = PlayerPrefs.GetInt("id_user");
+            id_user = PlayerPrefs.GetInt("id_user"),
             level_name = levelName,
             level_file = blocksString,
             level_time = ReadTimer.inputInt,
@@ -127,10 +101,7 @@ public class SaveLevel : MonoBehaviour
         };
 
         string jsonData = JsonUtility.ToJson(newLevel);
-        Debug.Log(jsonData);
-
-        // Send using the Put method:
-        // https://stackoverflow.com/questions/68156230/unitywebrequest-post-not-sending-body
+        //Debug.Log(jsonData);
 
         using (UnityWebRequest www = UnityWebRequest.Put(url + newLevelEP, jsonData))
         {

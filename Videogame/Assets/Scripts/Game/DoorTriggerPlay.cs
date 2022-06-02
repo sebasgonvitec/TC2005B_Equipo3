@@ -19,33 +19,33 @@ public class DoorTriggerPlay : MonoBehaviour
     private GameObject[] doors;
     private bool doorOpen;
     private bool onLever;
+    private bool doorsObtained;
 
     public Sprite openSprite;
     public Sprite closeSprite;
 
-
-    void Start()
-    {
-        //Get array of doors
-        GetDoors();
-
-        doorOpen = true;
-        //First change to colliders of doors
-        for (int i = 0; i < doors.Length; i++)
-        {
-            ToggleDoorCollider(doorOpen, doors[i].GetComponent<Collider2D>());
-        }
-        
-
-    }
-
     void Update()
     {
+
+        if (!doorsObtained)
+        {
+            GetDoors();
+
+            doorOpen = true;
+            for (int i = 0; i < doors.Length; i++)
+            {
+                ToggleDoorCollider(doorOpen, doors[i].GetComponent<Collider2D>());
+            }
+
+            //Debug.Log(doors.Length);
+
+            doorsObtained = true;
+        }
         //Conditions to open doors
         if (Input.GetKeyDown(KeyCode.E) && onLever)
         {
             ToggleDoor();
-            Debug.Log("Door Action");
+            //Debug.Log("Door Action");
             for (int i = 0; i < doors.Length; i++)
             {
                 ToggleDoorCollider(doorOpen, doors[i].GetComponent<Collider2D>());

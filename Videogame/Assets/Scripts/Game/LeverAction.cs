@@ -40,6 +40,14 @@ public class LeverAction : MonoBehaviour
         }
     }
 
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            onPlayer = false;
+        }
+    }
+
     //Toggle leverState boolean variable
     private void LeverToggle()
     {

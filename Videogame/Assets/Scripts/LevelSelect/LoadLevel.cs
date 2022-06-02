@@ -30,40 +30,10 @@ public class LoadLevel : MonoBehaviour
     //Load level on Start
     void Start()
     {
-        //OnLoad(LevelLoader.levelPath);
         OnLoadAlt(PlayerPrefs.GetString("levelString"));
     }
 
-    //Function to load elements from .BIN file into the level
-    public void OnLoad(string levelPath)
-    {
-        //Check how this works for saving levels in DB
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(
-            levelPath,
-            FileMode.Open,
-            FileAccess.Read,
-            FileShare.Read);
-        Debug.Log(stream);
-        var obj = (Block[])formatter.Deserialize(stream);
-        Debug.Log("obj");
-        stream.Close();
-
-        //Erase any elements in scene before starting to build it
-        Clean();
-
-        //Instantiate each prefab on level
-        for (int i = 0; i < obj.Length; i++)
-        {
-            Instantiate(
-                availableBlocks[obj[i].id],
-                new Vector3(
-                    obj[i].x,
-                    obj[i].y,
-                    obj[i].z), Quaternion.identity);
-        }
-    }
-
+    //Function to load elements from string into the level
     public void OnLoadAlt(string levelString)
     {
         string[] blocks = levelString.Split('<');

@@ -47,7 +47,7 @@ public class APITest : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Started Query");
+        //Debug.Log("Started Query");
         QueryLevels();
     }
     void Update()
@@ -86,7 +86,7 @@ public class APITest : MonoBehaviour
     public void LoadLevels()
     {
         Clear();
-        Debug.Log("Load Levels Started");
+        //Debug.Log("Load Levels Started");
         for (int i = 0; i < allLevels.levels.Count; i++)
         {
             Level lvl = allLevels.levels[i];
@@ -153,6 +153,6 @@ public class APITest : MonoBehaviour
 
     public void Load()
     {
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(6, LoadSceneMode.Single);
     }
 }

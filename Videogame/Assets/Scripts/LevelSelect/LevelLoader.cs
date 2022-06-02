@@ -32,6 +32,6 @@ public class LevelLoader : MonoBehaviour
     //Load scene with all its elements
     public void Load()
     {
-        SceneManager.LoadScene(3, LoadSceneMode.Single);
+        SceneManager.LoadScene(6, LoadSceneMode.Single);
     }
 }
