@@ -49,3 +49,10 @@ CREATE VIEW level_times AS
 		ON levels.id_user = gameplays.id_user
 	 ORDER BY time_elapsed ASC;
 SELECT * FROM level_times;
+
+#view of levels and times played
+DROP VIEW IF EXISTS times_level;
+CREATE VIEW times_level AS
+	SELECT level_name, times_played FROM asleep_db.levels
+	 ORDER BY times_played DESC;
+SELECT * FROM times_level;

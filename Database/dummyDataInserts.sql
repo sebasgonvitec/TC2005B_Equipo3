@@ -22,7 +22,7 @@ COMMIT;
 
 -- Dummy data for levels
 SET AUTOCOMMIT=0;
-INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"ArchivoBLOB.bin", 120, 150, 0, '2022-05-23 19:47:32'), 
+INSERT INTO levels VALUES (1, 1, 'Donde esta el topo',"0,-25,-21,0<0,-26,-21,0<", 120, 150, 0, '2022-05-23 19:47:32'), 
 (2, 5, 'New level', "0,-25,-21,0<0,-26,-21,0<", 90, 176, 0, '2022-05-27 16:27:29'), 
 (3, 5, '3 stories level', "0,-25,-21,0<0,-26,-21,0<0,-27,-21,0<", 150, 224, 0, '2022-06-06 17:04:13'), 
 (4, 7, 'Nivel 1: Facil', "0,-25,-21,0<", 120, 134, 0, '2022-05-27 18:59:07'),
