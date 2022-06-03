@@ -30,6 +30,10 @@ public class PlayerTeleport : MonoBehaviour
             {
                 transform.position = currentTeleporter.GetComponent<GreenTeleporter>().GetDestination().position;
             }
+            if (currentTeleporter != null && GetComponent<PlayerKeys>().GetPinkKey() && currentTeleporter.CompareTag("PortalPink"))
+            {
+                transform.position = currentTeleporter.GetComponent<PinkTeleporter>().GetDestination().position;
+            }
         }
     }
 
@@ -48,6 +52,12 @@ public class PlayerTeleport : MonoBehaviour
             //Debug.Log("Entered Portal");
             currentTeleporter = collision.gameObject;
         }
+
+        if (collision.CompareTag("PortalPink"))
+        {
+            //Debug.Log("Entered Portal");
+            currentTeleporter = collision.gameObject;
+        }
     }
 
     //Set current Portal to none if not touching portal anymore
@@ -62,6 +72,14 @@ public class PlayerTeleport : MonoBehaviour
             }
         }
         if (collision.CompareTag("PortalGreen"))
+        {
+            //Debug.Log("Exited Portal");
+            if (collision.gameObject == currentTeleporter)
+            {
+                currentTeleporter = null;
+            }
+        }
+        if (collision.CompareTag("PortalPink"))
         {
             //Debug.Log("Exited Portal");
             if (collision.gameObject == currentTeleporter)

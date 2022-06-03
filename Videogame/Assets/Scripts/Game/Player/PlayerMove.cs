@@ -28,6 +28,10 @@ public class PlayerMove : MonoBehaviour
     private bool isTouchingGround;
     private bool isTouchingBox;
 
+    public Transform boxCheck;
+    public float boxCheckRadius;
+    private bool isPushingBox;
+   
     private Animator playerAnimation;
 
     private bool paralysis;
@@ -61,6 +65,7 @@ public class PlayerMove : MonoBehaviour
         //Check if touching ground or box for jumping mechanics
         isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         isTouchingBox = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, boxesLayer);
+        isPushingBox = Physics2D.OverlapCircle(boxCheck.position, boxCheckRadius, boxesLayer);
         direction = Input.GetAxis("Horizontal");
 
         //Restrict movement after touching Imer
@@ -99,6 +104,8 @@ public class PlayerMove : MonoBehaviour
 
         playerAnimation.SetFloat("Speed", Mathf.Abs(player.velocity.x));
         playerAnimation.SetBool("OnGround", (isTouchingGround || isTouchingBox));
+        playerAnimation.SetBool("PushingBox", isPushingBox);
+        //playerAnimation.SetBool("Paralysis", paralysis);
 
     }
 

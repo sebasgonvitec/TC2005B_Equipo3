@@ -20,13 +20,18 @@ public class PlayerKeys : MonoBehaviour
     //public Sprite purpleImage;
     public bool hasPurpleKey;
     public bool hasGreenKey;
-    // Start is called before the first frame update
+    public bool hasPinkKey;
+
+    public GameObject imagePrefab;
+    public Transform inventory;
+    
     void Start()
     {
         //purpleKeyImage = GameObject.Find("DreamCatcherImage");
         //Debug.Log(GameObject.Find("DreamCatcherImage"));
         hasPurpleKey = false;
         hasGreenKey = false;
+        hasPinkKey = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -35,6 +40,8 @@ public class PlayerKeys : MonoBehaviour
 
         if (collision.CompareTag("DreamCatcherPurple"))
         {
+            var dc = Instantiate(imagePrefab, inventory);
+            dc.GetComponent<Image>().sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
             hasPurpleKey = true;
             //canvasGroup.alpha = 1;
             Destroy(collision.gameObject);
@@ -43,7 +50,19 @@ public class PlayerKeys : MonoBehaviour
 
         if (collision.CompareTag("DreamCatcherGreen"))
         {
+            var dc = Instantiate(imagePrefab, inventory);
+            dc.GetComponent<Image>().sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
             hasGreenKey = true;
+            //canvasGroup.alpha = 1;
+            Destroy(collision.gameObject);
+            //purpleKeyImage.GetComponent<Image>().sprite = purpleImage;
+        }
+
+        if (collision.CompareTag("DreamCatcherPink"))
+        {
+            var dc = Instantiate(imagePrefab, inventory);
+            dc.GetComponent<Image>().sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
+            hasPinkKey = true;
             //canvasGroup.alpha = 1;
             Destroy(collision.gameObject);
             //purpleKeyImage.GetComponent<Image>().sprite = purpleImage;
@@ -57,5 +76,9 @@ public class PlayerKeys : MonoBehaviour
     public bool GetGreenKey()
     {
         return hasGreenKey;
+    }
+    public bool GetPinkKey()
+    {
+        return hasPinkKey;
     }
 }
