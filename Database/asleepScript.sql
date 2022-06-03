@@ -24,6 +24,7 @@ CREATE TABLE levels(
     level_file TEXT NOT NULL,
     level_time INT NOT NULL,
     num_items INT NOT NULL,
+    times_played INT NOT NULL DEFAULT 0, 
     date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, #agregar cosa a la dummy data y agregar en views 
     PRIMARY KEY (id_level),
     KEY idx_fk_user_id (id_user),
