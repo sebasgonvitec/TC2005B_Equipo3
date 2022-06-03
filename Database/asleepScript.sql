@@ -13,7 +13,7 @@ CREATE TABLE users(
   user_password VARCHAR(45) NOT NULL,
   num_levels_created INT NOT NULL DEFAULT 0,
   first_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  last_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, #!!!!!!!!
+  last_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, #trigger
   PRIMARY KEY (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
