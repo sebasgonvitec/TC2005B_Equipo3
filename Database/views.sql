@@ -56,3 +56,12 @@ CREATE VIEW times_level AS
 	SELECT level_name, times_played FROM asleep_db.levels
 	 ORDER BY times_played DESC;
 SELECT * FROM times_level;
+
+#ranking view
+DROP VIEW IF EXISTS ranking;
+CREATE VIEW ranking AS
+	SELECT username, num_levels_created FROM asleep_db.users INNER JOIN asleep_db.levels
+    ON users.id_user = levels.id_user 
+    GROUP BY users.id_user
+    ORDER BY num_levels_created DESC;
+SELECT * FROM ranking;

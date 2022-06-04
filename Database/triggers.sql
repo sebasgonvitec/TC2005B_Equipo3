@@ -1,11 +1,14 @@
 USE asleep_db;
 
-# update the last connection timestamp
-DROP TRIGGER IF EXISTS update_lastC;
-CREATE TRIGGER update_lastC
-AFTER INSERT ON users
-FOR EACH ROW
-	UPDATE last_connection SET last_connection = CURRENT_TIMESTAMP();
+# update the last connection timestamp, cambiar a update en vez de after en vez times_login
+DELIMITER $$
+DROP TRIGGER IF EXISTS update_connections;
+CREATE TRIGGER update_connections ON users
+AFTER UPDATE users.last_connection AS
+BEGIN
+	CALL add_connections(users.times_login);
+	UPDATE users.times_login SET users.times_login = RETURN_STATUS;
+END$$
 
 # update the number of times a level has been played
 DELIMITER $$
@@ -24,8 +27,9 @@ DELIMITER $$
 DROP TRIGGER IF EXISTS update_levelsC;
 CREATE TRIGGER update_levelsC
 AFTER INSERT ON levels
-FOR EACH ROW 
 BEGIN
-	CALL num_timesP(levels.id_level);
-	UPDATE levels.times_played SET levels.times_played = RETURN_STATUS;
+	SET @levelUser = SELECT id_user FROM users;
+    SET @numLevels = SELECT num_levels_created FROM users;
+	IF(levels.id_user = levelUser) THEN
+		CALL add_levelsC(users.num_levels_created);
 END$$
