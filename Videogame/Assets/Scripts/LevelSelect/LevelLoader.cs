@@ -27,7 +27,7 @@ public class LevelLoader : MonoBehaviour
     public string levelString;
 
     //Gets time of level from database
-    public static float levelTime = 120;
+    public static float levelTime = 10;
 
     //Load scene with all its elements
     public void Load()

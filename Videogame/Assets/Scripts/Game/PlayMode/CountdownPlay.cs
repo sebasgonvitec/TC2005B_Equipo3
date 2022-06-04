@@ -26,6 +26,8 @@ public class CountdownPlay : MonoBehaviour
     public float finalfinalTime;
     public string finalTime;
 
+    private bool timerStop;
+
     //Events for timer start and runOut
     public static event Action OnTimerRunOutPlay;
     public static event Action OnTimerStartPlay;
@@ -43,7 +45,9 @@ public class CountdownPlay : MonoBehaviour
     }
     void Start()
     {
+        timerStop = false;
         timeStart = PlayerPrefs.GetInt("levelTime");
+        //timeStart = 337;
         textbox.enabled = true;
         initialTime = timeStart;
         OnTimerStartPlay?.Invoke();
@@ -51,6 +55,9 @@ public class CountdownPlay : MonoBehaviour
     
     void Update()
     {
+        if (timerStop)
+            return;
+
         if (timeStart <= 0.5f)
         {
             StopTimer();
@@ -76,7 +83,8 @@ public class CountdownPlay : MonoBehaviour
     {
         textbox.enabled = false;
         finalTimeText.text = finalTime;
-    }
+        timerStop = true;
+     }
 
     //Calculate the time elapsed and display it nicely
     public string getFinalTime()
