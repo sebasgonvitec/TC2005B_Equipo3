@@ -10,13 +10,15 @@ BEGIN
 	SELECT COUNT(id_level) FROM gameplays WHERE (id_level = idLevel);
     RETURN @times;
 END$$
+DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS add_levelsC;
 CREATE PROCEDURE add_levelsC (IN levels_created INT)
 BEGIN
-	SET levels_created = levels_created + 1;
+	SET levels_created = levels_created + 1; #return
 END$$
+DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS add_connections;
@@ -25,3 +27,4 @@ BEGIN
 	SET @numberConnections = times_log + 1;
     RETURN @numberConnections;
 END$$
+DELIMITER ;
