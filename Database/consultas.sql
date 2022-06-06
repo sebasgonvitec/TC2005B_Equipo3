@@ -6,8 +6,11 @@ SELECT * FROM ratings;
 SELECT * FROM gameplays;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 SELECT num_levels_created FROM users;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 SELECT * FROM gameplays;
@@ -16,6 +19,9 @@ DESCRIBE users;
 DESCRIBE levels;
 DESCRIBE gameplays;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
