@@ -1,9 +1,9 @@
 /*
  Player movement and actions for disabling it and enabling it in Play Mode
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  23/05/2022
  
@@ -107,13 +107,16 @@ public class PlayerMovePlay : MonoBehaviour
     private void DisablePlayerMovementPlay()
     {
         playerAnimation.enabled = false;
-        player.velocity = new Vector2(0f, 0f);
+        player.constraints = RigidbodyConstraints2D.FreezeAll;
+        //player.velocity = new Vector2(0f, 0f);
     }
 
     private void EnablePlayerMovementPlay()
     {
         playerAnimation.enabled = true;
-        player.bodyType = RigidbodyType2D.Dynamic;
+        player.constraints = RigidbodyConstraints2D.None;
+        player.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //player.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -2,11 +2,14 @@ USE asleep_db;
 SHOW TABLES;
 SELECT * FROM users;
 SELECT * FROM levels;
-SELECT * FROM ratings;
 SELECT * FROM gameplays;
+
 SELECT num_levels_created FROM users;
 
-select * from levels_view where id_level= 6;
+SELECT * FROM gameplays;
 
--- CALL num_timesPlayed (1);
--- CALL updt_lastConnection (1);
+DESCRIBE users;
+DESCRIBE levels;
+DESCRIBE gameplays;
+
+-- CALL updt_logTimes (10);
