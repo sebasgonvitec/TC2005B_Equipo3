@@ -1,9 +1,9 @@
 /*
  Pink Portal functionality
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  15/05/2022
  
@@ -35,6 +35,10 @@ public class PinkTeleporter : MonoBehaviour
     {
         //Stores Gameobjects with the tag PortalPink found in the scene
         portals = GameObject.FindGameObjectsWithTag("PortalPink");
+
+        if(portals.Length < 2)
+            return portals[0].transform;
+            
         if (portals[1].transform.position != transform.position)
         {
             return portals[1].transform;

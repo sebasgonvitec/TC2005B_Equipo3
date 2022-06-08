@@ -26,6 +26,9 @@ public class LogIn : MonoBehaviour
     //API / DB elements
     [SerializeField] string url; // root 
     [SerializeField] string getUsersEP; //get users endpoint
+    [SerializeField] string getSPLastConnectionEP; //get stored procedure EP
+     [SerializeField] string getSPLogTimesEP; //get stored procedure EP
+
 
 
     // USERS Table Structure
@@ -91,8 +94,10 @@ public class LogIn : MonoBehaviour
                     if(userEntry.user_password == password.text)
                     {
                         //Debug.Log("You entered to your account!"); 
+                        //Debug.Log(PlayerPrefs.GetInt("id_user"));
                         PlayerPrefs.SetInt("id_user", userEntry.id_user);
-                        Debug.Log(PlayerPrefs.GetInt("id_user"));
+                        CallLastConnectionSP(userEntry.id_user);
+                        CallLogInCountSP(userEntry.id_user);
                         SceneManager.LoadScene(3, LoadSceneMode.Single); //go to menu page
                     }
                         
@@ -110,6 +115,38 @@ public class LogIn : MonoBehaviour
                 Debug.Log("Error: " + www.error);
             
         }
+    }
+
+    //Function that starts coroutine to call last connection stored procedure
+    public void CallLastConnectionSP(int userId)
+    {
+        StartCoroutine(UpdateLastConnection(userId));
+    }
+
+    //Calls stored procedure to update the last connection of the user that logged in
+    IEnumerator UpdateLastConnection(int userId)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + getSPLastConnectionEP + userId))
+        {
+            yield return www.SendWebRequest();
+        }
+        
+    }
+
+    //Function that starts coroutine to call login count stored procedure
+    public void CallLogInCountSP(int userId)
+    {
+        StartCoroutine(UpdateLogTimes(userId));
+    }
+
+    //Calls stored procedure to update the login count of the user that logged in
+    IEnumerator UpdateLogTimes(int userId)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + getSPLogTimesEP + userId))
+        {
+            yield return www.SendWebRequest();
+        }
+        
     }
 
 
