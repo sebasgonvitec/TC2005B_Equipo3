@@ -1721,6 +1721,8 @@ MonoBehaviour:
   errorText: {fileID: 1637815026}
   url: http://localhost:5000
   getUsersEP: /api/users/log/
+  getSPLastConnectionEP: /api/users/sp/lastConnection/
+  getSPLogTimesEP: /api/users/sp/logTimes/
 --- !u!4 &1479154160
 Transform:
   m_ObjectHideFlags: 0

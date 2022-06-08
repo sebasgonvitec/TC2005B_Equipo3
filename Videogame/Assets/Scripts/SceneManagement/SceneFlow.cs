@@ -1,9 +1,9 @@
 /*
  Functions to manage the flow between Scenes based on their order on build settings
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  26/05/2022
  
@@ -19,17 +19,33 @@ public class SceneFlow : MonoBehaviour
     //Load Maker Scene
     public void LoadMaker()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 
     //Load Level Select Scene
     public void LoadLevelSelect()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(5);
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(3, LoadSceneMode.Single);
+
+    }
+
+    public void LoadCredits()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void CreditsBack()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 }
