@@ -28,8 +28,8 @@ DROP TRIGGER IF EXISTS update_levelsC;
 CREATE TRIGGER update_levelsC
 AFTER INSERT ON levels
 BEGIN
-	SET @levelUser = SELECT id_user FROM users;
-    SET @numLevels = SELECT num_levels_created FROM users;
-	IF(levels.id_user = levelUser) THEN
-		CALL add_levelsC(users.num_levels_created);
+	SET @levelUser = NEW.id_user;  
+    #SET @numLevels = 
+    SELECT num_levels_created FROM users WHERE id_user = levelUser;
+	UPDATE #donde num_levels_created = num_levels_created
 END$$

@@ -1,9 +1,9 @@
 /*
  Script to Upload levels to DB
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  26/05/2022
  
@@ -51,6 +51,7 @@ public class SaveLevel : MonoBehaviour
 
     [SerializeField] string url;
     [SerializeField] string newLevelEP;
+    [SerializeField] string getSPLevelsCreatedEP;
 
     //Function to be executed when save button is pressed
     public void OnSaveAlt()
@@ -79,7 +80,8 @@ public class SaveLevel : MonoBehaviour
                 blocksString += serializeBlocksString[j].id.ToString() + "," + serializeBlocksString[j].x.ToString() + "," + serializeBlocksString[j].y.ToString() + "," + serializeBlocksString[j].z.ToString() + "<";
             }
 
-            InsertNewLevel();
+            InsertNewLevel(); //add level to DB
+            CallLevelsCreatedSP(PlayerPrefs.GetInt("id_user")); //update users num of levels created
         }
     }
 
@@ -121,4 +123,21 @@ public class SaveLevel : MonoBehaviour
             }
         }
     }
+
+    //Function that starts coroutine to call user's num levels created stored procedure
+    public void CallLevelsCreatedSP(int userId)
+    {
+        StartCoroutine(UpdateLevelsCreated(userId));
+    }
+
+    //Calls stored procedure to update the user's numer of levels created
+    IEnumerator UpdateLevelsCreated(int userId)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + getSPLevelsCreatedEP + userId))
+        {
+            yield return www.SendWebRequest();
+        }
+        
+    }
+
 }

@@ -33,58 +33,6 @@ app.get('/', (request,response)=>{
 })
 
 // USERS TABLE --------------------------------------------------------------------------------
-// get users table 
-app.get('/api/users', async (request, response)=>{
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.execute('select * from users')
-        response.json(results)
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-//Get a user from specific id 
-app.get('/api/users/:id', async (request, response)=>
-{
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('select * from users where id_user= ?', [request.params.id])
-        response.json(results)
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
 
 //Get a user from specific username
 app.get('/api/users/log/:username', async (request, response)=>
@@ -150,12 +98,13 @@ app.put('/api/users', async (request, response)=>{
 
     try{
         connection = await connectToDB()
-        const [results, fields] = await connection.query('update users set username= ?, user_password= ?, num_levels_created= ?, first_connection= ?, last_connection= ? where id_user= ?', 
+        const [results, fields] = await connection.query('update users set username= ?, user_password= ?, num_levels_created= ?, first_connection= ?, last_connection= ?, times_login= ? where id_user= ?', 
         [request.body['username'], 
         request.body['user_password'],
         request.body['num_levels_created'], 
         request.body['first_connection'],
         request.body['last_connection'],
+        request.body['times_login'],
         request.body['id_user']])
 
         response.json({'message': "Data updated correctly."})
@@ -175,34 +124,6 @@ app.put('/api/users', async (request, response)=>{
         }
     }
 })
-
-//Delete a user with certain id
-app.delete('/api/users/:id', async (request, response)=>{
-
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('delete from users where id_user= ?', [request.params.id])
-        response.json({'message': "Data deleted correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
 
 // LEVEL TABLE ------------------------------------------------------------------------
 // get level table 
@@ -321,179 +242,10 @@ app.put('/api/levels', async (request, response)=>{
     }
 })
 
-//Delete a level with certain id
-app.delete('/api/levels/:id', async (request, response)=>{
-
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('delete from levels where id_level= ?', [request.params.id])
-        response.json({'message': "Data deleted correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-
-// RATING TABLE ------------------------------------------------------------------------
-// get level table 
-app.get('/api/ratings', async (request, response)=>{
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.execute('select * from ratings')
-        response.json(results)
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-//Get a level from specific id 
-app.get('/api/ratings/:id', async (request, response)=>
-{
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('select * from ratings where id_rating= ?', [request.params.id])
-        response.json(results)
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-//Post for levels table
-app.post('/api/ratings', async (request, response)=>{
-
-    let connection = null
-
-    try
-    {    
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('insert into ratings set ?', request.body)
-        response.json({'message': "Data inserted correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-
-// Put/Update for levels table
-app.put('/api/ratings', async (request, response)=>{
-
-    let connection = null
-
-    try{
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('update ratings set id_user= ?, id_level= ?, rating= ? where id_rating= ?', 
-        [request.body['id_user'], 
-        request.body['id_level'],
-        request.body['rating'],
-        request.body['id_rating']])
-
-        response.json({'message': "Data updated correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-//Delete a level with certain id
-app.delete('/api/ratings/:id', async (request, response)=>{
-
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('delete from ratings where id_rating= ?', [request.params.id])
-        response.json({'message': "Data deleted correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
-
-
 
 // GAMEPLAY TABLE ------------------------------------------------------------------------
 
-// get gamplay table 
+//get gamplay table 
 app.get('/api/gameplays', async (request, response)=>{
     let connection = null
 
@@ -605,37 +357,11 @@ app.put('/api/gameplays', async (request, response)=>{
     }
 })
 
-//Delete a level with certain id
-app.delete('/api/gameplays/:id', async (request, response)=>{
-
-    let connection = null
-
-    try
-    {
-        connection = await connectToDB()
-        const [results, fields] = await connection.query('delete from gameplays where id_gameplay= ?', [request.params.id])
-        response.json({'message': "Data deleted correctly."})
-    }
-    catch(error)
-    {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally
-    {
-        if(connection!==null) 
-        {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})
 
 
 // VIEWS /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Get levels_view 
+//Get levels_view (UNITY)
 app.get('/api/levelsview', async (request, response)=>
 {
     let connection = null
@@ -663,10 +389,150 @@ app.get('/api/levelsview', async (request, response)=>
 })
 
 
+// user_log View -> Select para Grafica 1
+app.get('/api/userLogView/g1', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT username, times_login FROM user_log')
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+// user_log View -> Select para Grafica 2
+app.get('/api/userLogView/g2', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT username, first_connection, last_connection FROM user_log')
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+// user_view View -> Select para Grafica 3
+app.get('/api/userView', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT * FROM user_view')
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+// times_level View -> Select para Grafica 4
+app.get('/api/timesLevelView', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT * FROM times_level')
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+// level_times View -> Select para Grafica 5
+app.get('/api/LevelTimesView/:levelName', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT * FROM level_times WHERE level_name = ? LIMIT 5;', [request.params.levelName])
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
 
 // STORED PROCEDURES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Call stored procedure to increase number of times played of a certain level
+//Call stored procedure to increase number of times played of a certain level (UNITY)
 app.get('/api/levels/sp/timesPlayed/:id_level', async (request, response)=>{
     let connection = null
 
@@ -692,7 +558,7 @@ app.get('/api/levels/sp/timesPlayed/:id_level', async (request, response)=>{
     }
 })
 
-// Call stored procedure to update last connection of a given user
+// Call stored procedure to update last connection of a given user (UNITY)
 app.get('/api/users/sp/lastConnection/:id_user', async (request, response)=>{
     let connection = null
 
@@ -719,6 +585,58 @@ app.get('/api/users/sp/lastConnection/:id_user', async (request, response)=>{
 })
 
 
+// Call stored procedure to update login count of a given user (UNITY)
+app.get('/api/users/sp/logTimes/:id_user', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('CALL updt_logTimes (?)',  [request.params.id_user])
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+
+// Call stored procedure to update the number of levels created of a given user (UNITY)
+app.get('/api/users/sp/levelsCreated/:id_user', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('CALL updt_createdLevels (?)',  [request.params.id_user])
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
 
 
 

@@ -14,7 +14,7 @@ CREATE TABLE users(
   num_levels_created INT NOT NULL DEFAULT 0,
   first_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   last_connection TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  times_login INT NOT NULL DEFAULT 1,  #trigger
+  times_login INT NOT NULL DEFAULT 0,  #trigger
   PRIMARY KEY (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -32,23 +32,12 @@ CREATE TABLE levels(
 	CONSTRAINT `fk_level_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE ratings(
-	id_rating INT NOT NULL AUTO_INCREMENT,
-    id_user INT NOT NULL, #foreign key
-    id_level INT NOT NULL, #foreign key
-    rating FLOAT NOT NULL DEFAULT 0 COMMENT '1-5',
-    PRIMARY KEY (id_rating),
-    KEY idx_fk_user_id (id_user),
-    CONSTRAINT `fk_rating_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user),
-	KEY idx_fk_level_id (id_level),
-	CONSTRAINT `fk_rating_id_level` FOREIGN KEY (id_level) REFERENCES levels(id_level)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE gameplays(
     id_gameplay INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL, #foreign key
     id_level INT NOT NULL, #foreign key
     time_elapsed INT NOT NULL,
+    date_played TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_gameplay),
     KEY idx_fk_user_id (id_user),
     CONSTRAINT `fk_game_id_user` FOREIGN KEY (id_user) REFERENCES users(id_user),

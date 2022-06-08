@@ -15,6 +15,8 @@ public class Level
     public string level_file;
     public int level_time;
     public int num_items;
+    public int times_played;
+    public string date_created;
 }
 
 public class NewLevel
@@ -31,16 +33,40 @@ public class LevelsList
 {
     public List<Level> levels;
 }
+
+
+[System.Serializable]
+public class LevelView
+{
+    public string username;
+    public int id_level;
+    public string level_name;
+    public string level_file;
+    public string date_created;
+}
+
+[System.Serializable]
+public class LevelViewList
+{
+    public List<LevelView> levelViews;
+}
+
+
 public class APITest : MonoBehaviour
 {
     [SerializeField] string url;
     [SerializeField] string getLevelsEP;
+    [SerializeField] string getLevelViewEP;
+    [SerializeField] string getSPTimesPlayedEP;
 
     public GameObject itemPrefab;
     public Transform contentPanel;
 
     public LevelsList allLevels;
     public LevelsList allLevelsFiles;
+
+    public LevelViewList allLevelView;
+    public LevelView levelView;
 
     public string levelString;
     public int levelTime;
@@ -60,7 +86,7 @@ public class APITest : MonoBehaviour
 
     public void QueryLevels()
     {
-        StartCoroutine(GetLevels());
+        StartCoroutine(GetLevels());   
     }
 
     IEnumerator GetLevels()
@@ -73,6 +99,7 @@ public class APITest : MonoBehaviour
             {
                 string jsonString = "{\"levels\":" + www.downloadHandler.text + "}";
                 allLevels = JsonUtility.FromJson<LevelsList>(jsonString);
+                StartCoroutine(GetLevelView());
             }
             else
             {
@@ -80,28 +107,59 @@ public class APITest : MonoBehaviour
             }
         }
 
-        LoadLevels();
+        
     }
 
+    //Get username of a certain level_id from levels view 
+    IEnumerator GetLevelView()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + getLevelViewEP))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                string jsonString = "{\"levelViews\":" + www.downloadHandler.text + "}";
+                allLevelView = JsonUtility.FromJson<LevelViewList>(jsonString);   
+                LoadLevels();
+            }
+            else
+            {
+                Debug.Log("Error: " + www.error);
+            }
+        }
+
+        
+    }
+
+    
+    //Function that loads all level buttons in the select page
     public void LoadLevels()
     {
         Clear();
         //Debug.Log("Load Levels Started");
         for (int i = 0; i < allLevels.levels.Count; i++)
         {
-            Level lvl = allLevels.levels[i];
+            Level lvl = allLevels.levels[i]; // access current level
+            LevelView levelView = allLevelView.levelViews[i]; // access current view
+
+            //StartCoroutine(GetUsername(lvl.id_level));
+            // Level lvl = allLevels.levels[i]; // access current level
 
             var item = Instantiate(itemPrefab, contentPanel);
             Text[] textFields = item.GetComponentsInChildren<Text>();
-            textFields[0].text = lvl.level_name;
-            textFields[1].text = lvl.id_user.ToString();
-            textFields[2].text = lvl.level_time.ToString();
-            textFields[3].text = lvl.num_items.ToString();
+            textFields[0].text = levelView.level_name;
+            textFields[1].text = levelView.username;
+            textFields[2].text = lvl.times_played.ToString();
+            textFields[3].text = levelView.date_created;
 
+            
             //Debug.Log(lvl.level_file);
             item.GetComponent<Button>().onClick.AddListener(() =>
             {
+                PlayerPrefs.SetInt("id_level", lvl.id_level); //save the current level id 
                 QueryLevelFiles(lvl.id_level);
+                CallTimesPlayedSP(lvl.id_level); // call SP to increase num of times played  
             });
         }
     }
@@ -120,6 +178,7 @@ public class APITest : MonoBehaviour
     {
         StartCoroutine(GetLevelFiles(levelId));
     }
+
     IEnumerator GetLevelFiles(int levelId)
     {
         using (UnityWebRequest www = UnityWebRequest.Get(url + getLevelsEP + "/" +levelId))
@@ -154,5 +213,22 @@ public class APITest : MonoBehaviour
     public void Load()
     {
         SceneManager.LoadScene(6, LoadSceneMode.Single);
+    }
+
+
+    //Function that starts coroutine to call times_played stored procedure
+    public void CallTimesPlayedSP(int levelId)
+    {
+        StartCoroutine(UpdateTimesPlayed(levelId));
+    }
+
+    //Calls stored procedure to increase de number of times played of a level
+    IEnumerator UpdateTimesPlayed(int levelId)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + getSPTimesPlayedEP + levelId))
+        {
+            yield return www.SendWebRequest();
+        }
+        
     }
 }
