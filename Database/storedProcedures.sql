@@ -16,7 +16,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS updt_lastConnection;
 CREATE PROCEDURE updt_lastConnection (IN idUser INT)
 BEGIN
-	UPDATE users SET last_connection = CURRENT_TIMESTAMP WHERE (id_user = idUser);
+
+UPDATE users SET last_connection = CURRENT_TIMESTAMP WHERE (id_user = idUser);
+
 END$$
 DELIMITER ;
 
@@ -24,7 +26,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS updt_logTimes;
 CREATE PROCEDURE updt_logTimes (IN idUser INT)
 BEGIN
-	UPDATE users SET times_login = times_login + 1 WHERE (id_user = idUser);
+
+UPDATE users SET times_login = times_login + 1 WHERE (id_user = idUser);
 END$$
 DELIMITER ;
 
@@ -37,17 +40,6 @@ END$$
 DELIMITER ;
 
 -- STATISTICS
-
-
-
-
-
-
-
-
-
-
-
 
 
 
