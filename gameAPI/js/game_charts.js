@@ -1,7 +1,7 @@
 import {Chart, registerables} from '/scripts/charts/chart.esm.js'
-import 'chartjs-adapter-date-fns'
+//import 'chartjs-adapter-date-fns'
 Chart.register(...registerables);
-//import {'chartjs-adapter-date-fns'} from '../node_modules';
+//import { timeStamp } from 'console';
 
 /**
  * @param {number} alpha Indicated the transparency of the color
@@ -96,7 +96,6 @@ try {
         
         const values = Object.values(results)
         const con_username = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color(0.8))
         const first_c = values.map(e => e['first_connection'])
         const last_c = values.map(e => e['last_connection'])
 
@@ -145,9 +144,8 @@ try {
                             beginAtZero: true
                         }
                     }
-                }
+                } 
             })
-
     }
 }
 catch(error) {
@@ -181,7 +179,7 @@ try
         const ctx_levels = document.getElementById('apiChart').getContext('2d');
         const levelChart = new Chart(ctx_levels, 
             {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: level_username,
                     datasets: [
@@ -201,6 +199,8 @@ catch(error)
 }
 
 // Graph 4: Bar Chart, Times levels view. The 10 most played levels
+// top labels pluggin block
+
 try {
     const levels_played_view = await fetch('http://localhost:5000/api/timesLevelView',{
         method: 'GET'
@@ -216,11 +216,25 @@ try {
         console.log('Data converted correctly. Plotting chart.')
         
         const values = Object.values(results)
-        //const level_username = values.map(e => e['username']) ver como agregar esto
+        const level_username = values.map(e => e['username']) 
         const level_name = values.map(e => e['level_name'])
         const times_played = values.map(e => e['times_played'])
+    
+        /* const topLabels {
+            id: 'topLabels',
+            afterDatasetsDraw(chart, args, pluginOptions) {
+                const { ctx, scales: {x, y} } = chart;
+                ctx.font = 'bold 12px sans-serif';
+                ctx.fillStyle = black;
+                ctx.textAlign = 'center';
+                ctx.fillText(level_username, x.getPixelForValue(), )
+            }
+        } */
+
         console.log(times_played)
+
         const ctx_levels = document.getElementById('thirdChart').getContext('2d');
+        
         const levelChart = new Chart(ctx_levels, 
             {
                 type: 'bar',
@@ -257,7 +271,9 @@ try {
                             beginAtZero: true
                         }
                     }
-                }
+                },
+
+                //plugins: [topLabels]
             })
 
     }
@@ -331,41 +347,3 @@ try {
 catch(error) {
     console.log(error)
 }
-
-// We obtain a reference to the canvas that we are going to use to plot the chart.
-/* const ctx = document.getElementById('firstChart').getContext('2d');
-// To plot a chart, we need a configuration object that has all the information that the chart needs.
-const firstChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-}); */

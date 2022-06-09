@@ -9,6 +9,7 @@ const port = 5000
 
 app.use(express.json())
 
+app.use('/scripts/charts', express.static('./node_modules/chart.js/dist/'))
 app.use('/js', express.static('./js'))
 app.use('/css', express.static('./css'))
 
@@ -25,7 +26,7 @@ async function connectToDB()
 
 // Get root page (main crud html)
 app.get('/', (request,response)=>{
-    fs.readFile('./html/crud_index.html', 'utf8', (err, html)=>{
+    fs.readFile('./html/charts.html', 'utf8', (err, html)=>{
         if(err) response.status(500).send('There was an error: ' + err)
         console.log('Loading page...')
         response.send(html)
