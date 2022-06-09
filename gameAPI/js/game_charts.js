@@ -1,5 +1,5 @@
 import {Chart, registerables} from '/scripts/charts/chart.esm.js'
-//import 'chartjs-adapter-date-fns'
+import {toDate} from '/scripts/charts/chartjs-adapter-date-fns.esm.js'
 Chart.register(...registerables);
 //import { timeStamp } from 'console';
 
@@ -80,6 +80,7 @@ catch(error) {
 }
 
 // Graph 2: Timeline Chart, User log view. First and Last Connection of each user
+// ESTA ES LA GRÁFICA QUE NECESITA EL DATE-FNS DEL PROBLEMA 
 try {
     const connections_view = await fetch('http://localhost:5000/api/userLogView/g2',{
         method: 'GET'
@@ -108,7 +109,7 @@ try {
                     datasets: [
                         {
                             label: 'Timeline of Users Connections',
-                            data: [[first_c], [last_c]],
+                            data: [toDate(first_c), toDate(last_c)],
                             backgroundColor: [ 
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',

@@ -10,6 +10,7 @@ const port = 5000
 app.use(express.json())
 
 app.use('/scripts/charts', express.static('./node_modules/chart.js/dist/'))
+app.use('/scripts/charts', express.static('./node_modules/chartjs-adapter-date-fns/dist'))
 app.use('/js', express.static('./js'))
 app.use('/css', express.static('./css'))
 
