@@ -10,7 +10,6 @@ const port = 5000
 app.use(express.json())
 
 app.use('/scripts/charts', express.static('./node_modules/chart.js/dist/'))
-app.use('/scripts/charts', express.static('./node_modules/chartjs-adapter-date-fns/dist'))
 app.use('/js', express.static('./js'))
 app.use('/css', express.static('./css'))
 
@@ -359,8 +358,6 @@ app.put('/api/gameplays', async (request, response)=>{
     }
 })
 
-
-
 // VIEWS /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Get levels_view (UNITY)
@@ -502,6 +499,32 @@ app.get('/api/timesLevelView', async (request, response)=>
     }
 })
 
+// level_name -> Select form para gráfica 5
+app.get('/api/LevelTimesView/levelNameForm', async (request, response)=>
+{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.query('SELECT level_name FROM level_times')
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
 
 // level_times View -> Select para Grafica 5
 app.get('/api/LevelTimesView/:levelName', async (request, response)=>

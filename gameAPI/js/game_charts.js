@@ -1,7 +1,5 @@
-import {Chart, registerables} from '/scripts/charts/chart.esm.js'
-import {toDate} from '/scripts/charts/chartjs-adapter-date-fns.esm.js'
-Chart.register(...registerables);
-//import { timeStamp } from 'console';
+//import {Chart, registerables} from '/scripts/charts/chart.esm.js'
+//Chart.register(...registerables);
 
 /**
  * @param {number} alpha Indicated the transparency of the color
@@ -41,7 +39,7 @@ try {
                     labels: log_username,
                     datasets: [
                         {
-                            label: 'Most Active Users',
+                            label: 'Most Active Users by the Number of Times They Have Logged In',
                             data: logged_times,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
@@ -85,23 +83,21 @@ try {
     const connections_view = await fetch('http://localhost:5000/api/userLogView/g2',{
         method: 'GET'
     })
-
-    console.log('Got a response correctly')
-
-    if(connections_view.ok) {
+    console.log('Got a response correctly for second chart')
+    if(connections_view.ok)
+    {
         console.log('Response is ok. Converting to JSON.')
-
         let results = await connections_view.json()
-
         console.log('Data converted correctly. Plotting chart.')
         
         const values = Object.values(results)
         const con_username = values.map(e => e['username'])
         const first_c = values.map(e => e['first_connection'])
         const last_c = values.map(e => e['last_connection'])
-
+        const dates = values.map(e => [e['first_connection'], e['last_connection']])
+        console.log('s', first_c, last_c, dates)
         const ctx_levels = document.getElementById('secondChart').getContext('2d');
-        const levelChart = new Chart(ctx_levels, 
+        const levelChart = new Chart(ctx_levels,
             {
                 type: 'bar',
                 data: {
@@ -109,8 +105,8 @@ try {
                     datasets: [
                         {
                             label: 'Timeline of Users Connections',
-                            data: [toDate(first_c), toDate(last_c)],
-                            backgroundColor: [ 
+                            data: dates,
+                            backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
                                 'rgba(255, 206, 86, 0.2)',
@@ -130,7 +126,6 @@ try {
                         }
                     ]
                 },
-
                 options: {
                     indexAxis: 'y',
                     scales: {
@@ -145,13 +140,13 @@ try {
                             beginAtZero: true
                         }
                     }
-                } 
+                }
             })
     }
 }
 catch(error) {
     console.log(error)
-}
+} 
 
 // Graph 3: Pie Chart, User View. The percentage of levels each user has created 
 try
@@ -185,7 +180,7 @@ try
                     labels: level_username,
                     datasets: [
                         {
-                            label: 'Levels Created',
+                            label: 'Levels Created by Each User',
                             backgroundColor: level_colors,
                             data: level_created
                         }
@@ -220,17 +215,6 @@ try {
         const level_username = values.map(e => e['username']) 
         const level_name = values.map(e => e['level_name'])
         const times_played = values.map(e => e['times_played'])
-    
-        /* const topLabels {
-            id: 'topLabels',
-            afterDatasetsDraw(chart, args, pluginOptions) {
-                const { ctx, scales: {x, y} } = chart;
-                ctx.font = 'bold 12px sans-serif';
-                ctx.fillStyle = black;
-                ctx.textAlign = 'center';
-                ctx.fillText(level_username, x.getPixelForValue(), )
-            }
-        } */
 
         console.log(times_played)
 
@@ -243,7 +227,7 @@ try {
                     labels: level_name,
                     datasets: [
                         {
-                            label: 'Timeline of Users Connections',
+                            label: 'Most Played Levels',
                             data: [times_played],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
@@ -283,12 +267,54 @@ catch(error) {
     console.log(error)
 }
 
-// Graph 5: The best 5 times by levels (a drop down will be use but at the moment a string is used)
-// revisar esto
+// Drop Down List 
 try {
-    const times_by_level_view = await fetch('http://localhost:5000/api/LevelTimesView/:levelName',{
+    const level_names_form = await fetch('http://localhost:5000/api/LevelTimesView/levelNameForm',{
         method: 'GET'
     })
+
+    console.log('Got a response correctly')
+
+    if(level_names_form.ok) {
+        console.log('Response is ok. Converting to JSON.')
+
+        let results = await level_names_form.json()
+        console.log(results)
+
+        console.log('Data converted correctly. Plotting selector.')
+        
+        const values = Object.values(results)
+        const level_name = values.map(e => e['level_name']) 
+
+        let select = document.getElementById("levels")
+
+        for(let i=0; i<level_name.length; i++) {
+            let opt = level_name[i]
+            let element = document.createElement("option")
+            element.textContent = opt
+            element.value = opt
+            select.appendChild(element)
+        }
+    }
+}
+catch(error) {
+    console.log(error)
+}
+
+// Graph 5: The best 5 times by levels (a drop down will be use but at the moment a string is used)
+// revisar esto
+//levels.addEventListener('change', timesByLevel)
+function timesByLevel() {
+    let selected = document.getElementById("levels").value;
+    return selected
+}
+
+try { 
+    const levelName = timesByLevel()
+    const times_by_level_view = await fetch('http://localhost:5000/api/LevelTimesView/' + levelName,{
+        method: 'GET'
+    })
+    console.log("Nombre del nivel: " + levelName)
 
     console.log('Got a response correctly')
 
@@ -297,13 +323,16 @@ try {
 
         let results = await times_by_level_view.json()
 
-        console.log('Data converted correctly. Plotting chart.')
+        console.log('Data converted correctly. Plotting Best Times chart.')
         
         const values = Object.values(results)
         const username = values.map(e => e['username']) 
         const time_elapsed = values.map(e => e['time_elapsed'])
+        console.log(username)
+        console.log(time_elapsed)
 
         const ctx_levels = document.getElementById('fourthChart').getContext('2d');
+
         const levelChart = new Chart(ctx_levels, 
             {
                 type: 'bar',
@@ -312,7 +341,7 @@ try {
                     datasets: [
                         {
                             label: 'The best 5 times by levels',
-                            data: [time_elapsed],
+                            data: time_elapsed,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
