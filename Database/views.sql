@@ -9,7 +9,7 @@ CREATE VIEW user_log AS
     ORDER BY times_login DESC 
     LIMIT 10;
 SELECT username, times_login FROM user_log; #SELECT GRAFICA 1
-SELECT username, first_connection, last_connection FROM user_log; #SELECT GRAFICA 2
+SELECT username, (first_connection), (last_connection) FROM user_log; #SELECT GRAFICA 2
 #SELECT username, TIMESTAMPDIFF(DAY, first_connection, last_connection) FROM user_log;
 
 #GRAFICA 3: PIE CHART -> QUE PORCENTAJE DEL TOTAL DE LOS NIVELES CREADOS POR USUARIO -> VER SI HACE FALTA UN COUNT
@@ -38,6 +38,7 @@ CREATE VIEW level_times AS
     INNER JOIN asleep_db.gameplays 
 		ON levels.id_user = gameplays.id_user 
 	 ORDER BY time_elapsed ASC;
+	 
 SELECT * FROM level_times WHERE level_name = "MyFirstLevel" LIMIT 5; #SELECT GRAFICA 5
 SELECT * FROM level_times;
 

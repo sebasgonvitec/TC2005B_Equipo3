@@ -508,6 +508,7 @@ app.get('/api/LevelTimesView/levelNameForm', async (request, response)=>
     {
         connection = await connectToDB()
         const [results, fields] = await connection.query('SELECT level_name FROM times_level')
+
         response.json(results)
     }
     catch(error)
