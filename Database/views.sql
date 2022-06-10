@@ -38,7 +38,9 @@ CREATE VIEW level_times AS
     INNER JOIN asleep_db.gameplays 
 		ON levels.id_user = gameplays.id_user 
 	 ORDER BY time_elapsed ASC;
-SELECT * FROM level_times WHERE level_name = "First Real Test" LIMIT 5; #SELECT GRAFICA 5
+SELECT * FROM level_times WHERE level_name = "MyFirstLevel" LIMIT 5; #SELECT GRAFICA 5
+SELECT * FROM level_times;
+
 
 -- UNITY
 #view del username, con las especificaciones del nivel, sin las ids ordenados del usuario con más niveles creados a menos

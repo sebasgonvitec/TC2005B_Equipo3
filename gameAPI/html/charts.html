@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" defer src="../js/charts.js"></script>
     <link href="../css/charts.css" type="text/css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <title>User Charts</title>
 </head>
 <body>
@@ -14,28 +16,41 @@
     </header>
 
     <div class="container">
-        <h2>Installation</h2>
-        <p>You can get the latest version of Chart.js from npm , the GitHub releases , or use a Chart.js CDN . Detailed installation instructions can be found on the<a href="https://www.chartjs.org/docs/latest/getting-started/installation.html">installation page.</a>In this example, the module was installed using npm. The<a href="https://www.chartjs.org/docs/latest/">documentation</a>for charts.js is very comprehensive. Have it around to search for anything that you might need.</p>
+        <h2>Graph #1: The 10 most active users</h2>
+        <p> Bar Chart, User log view. </p>
+        <canvas id="firstChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
     </div>
 
     <div class="container">
-        <h2>Creating a Chart</h2>
-        <p>It's easy to get started with Chart.js. All that's required is the script included in your page along with a single &lt;canvas&gt; node to render the chart. Canvas are used to draw graphics on a web page.</p>
-
-        <p>For this basic chart, we need to create a new Chart and draw it on the canvas. We select the canvas using <code>document.getElementById</code> and the id of the canvas. Then, we need to create a configuration object which contains the labels, colors, and data that is goint go be displayed.</p>
-
-        <canvas id="firstChart" width="600" height="600" style="max-width: 600px; max-height: 600px;"></canvas>
+        <h2> Graph #2: First and Last Connection of each user </h2>
+        <p> Timeline Chart, User log view. </p>
+        <canvas id="secondChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
     </div>
 
     <div class="container">
-        <h2>Getting data from an API</h2>
-        <p>To use the data from an API to plot a chart, we first need to make a request to the API and process the results. In this case, we are creating new arrays using the<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a>method. If you are familiar with Python list comprehensions, map works very similarly.</p>
-
-        <p>The map() method creates a new array populated with the results of calling a provided function on every element in the calling array. For this example, the function that we are using is only returning a specific column of the results. For example, <code>values.map(e => e['name'])</code> creates an array that only has the column names from the results object.</p>
-
-        <p>Using the arrays that only have the data that we need, we can create a new configuration object that is going to be plotted in the chart. For this example, we are ploting the completion rate of each level in the 'levels' table. Specifically, we need arrays that hold the names, and completion rate for each level. An additional array that contains a random color for each chart element is also created.</p>
-
-        <canvas id="apiChart" width="600" height="600" style="max-width: 600px; max-height: 600px;"></canvas>
+        <h2> Graph #3: The percentage of levels each user has created </h2>
+        <p> Pie Chart, User View. </p>
+        <canvas id="apiChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
     </div>
+
+    <div class="container">
+        <h2> Graph #4: The 10 most played levels </h2>
+        <p> Bar Chart, Times levels view.  </p>
+        <canvas id="thirdChart" width=auto height=auto></canvas>
+    </div>
+
+    <div class="container">
+        <h2> Graph #5: The best 5 times by levels </h2>
+        <p> Bar chart, (a drop down will be use but at the moment a string is used) </p>
+        <div> 
+            <form id="form-submit">
+                <select id="levels" name="levels">
+                    <option> Choose a level </option>
+                </select>
+            </form>
+        </div>
+        <canvas id="fourthChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
+    </div>
+
 </body>
 </html>
