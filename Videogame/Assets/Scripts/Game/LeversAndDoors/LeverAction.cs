@@ -19,6 +19,8 @@ public class LeverAction : MonoBehaviour
     private bool onPlayer;
     private bool leverState;
 
+    [SerializeField] private AudioSource leverSound;
+
     void Update()
     {
         leverAnimation = GetComponent<Animator>();
@@ -26,6 +28,10 @@ public class LeverAction : MonoBehaviour
         //Same conditions as doors
         if (Input.GetKeyDown(KeyCode.E) && onPlayer)
         {
+            if (!leverSound.isPlaying)
+            {
+                leverSound.Play();
+            }
             LeverToggle();
             leverAnimation.SetBool("leverState", leverState);
         }

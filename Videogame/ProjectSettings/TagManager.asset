@@ -20,6 +20,10 @@ TagManager:
   - DreamCatcherPink
   - PortalPink
   - DefaultBlocks
+  - ButtonAudio
+  - DCImage
+  - MainMusic
+  - LoginMusic
   layers:
   - Default
   - TransparentFX
