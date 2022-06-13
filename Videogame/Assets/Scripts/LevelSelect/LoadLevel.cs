@@ -32,9 +32,13 @@ public class LoadLevel : MonoBehaviour
     //Load level on Start
     void Start()
     {
+        
         OnLoadAlt(PlayerPrefs.GetString("levelString"));
+
+        GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().StopMusic();
+
         //OnLoadAlt(levelStringAndre);
-    } 
+    }
     //Function to load elements from string into the level
     public void OnLoadAlt(string levelString)
     {

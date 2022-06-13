@@ -16,6 +16,7 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
+    [SerializeField] private AudioSource teleportSound;
 
     void Update()
     {
@@ -24,14 +25,26 @@ public class PlayerTeleport : MonoBehaviour
             //Move player to position of other portal if currently of a portal and after getting the key
             if (currentTeleporter != null && GetComponent<PlayerKeys>().GetPurpleKey() && currentTeleporter.CompareTag("PortalPurple"))
             {
+                if (!teleportSound.isPlaying)
+                {
+                    teleportSound.Play();
+                }
                 transform.position = currentTeleporter.GetComponent<PurpleTeleporter>().GetDestination().position;
             }
             if (currentTeleporter != null && GetComponent<PlayerKeys>().GetGreenKey() && currentTeleporter.CompareTag("PortalGreen"))
             {
+                if (!teleportSound.isPlaying)
+                {
+                    teleportSound.Play();
+                }
                 transform.position = currentTeleporter.GetComponent<GreenTeleporter>().GetDestination().position;
             }
             if (currentTeleporter != null && GetComponent<PlayerKeys>().GetPinkKey() && currentTeleporter.CompareTag("PortalPink"))
             {
+                if (!teleportSound.isPlaying)
+                {
+                    teleportSound.Play();
+                }
                 transform.position = currentTeleporter.GetComponent<PinkTeleporter>().GetDestination().position;
             }
         }

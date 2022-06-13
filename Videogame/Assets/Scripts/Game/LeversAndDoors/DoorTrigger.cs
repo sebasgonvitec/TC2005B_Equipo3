@@ -36,6 +36,12 @@ public class DoorTrigger : MonoBehaviour
 
     void Update()
     {
+        if(MakerMode.playMode == false)
+        {
+            doorsObtained = false;
+            doorOpenGreen = false;
+            doorOpenPurple = false;
+        }
         //On entering Test Mode...
         if (MakerMode.playMode)
         {

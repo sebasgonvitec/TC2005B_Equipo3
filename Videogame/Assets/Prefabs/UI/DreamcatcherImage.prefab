@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3166043512084018734}
   m_Layer: 5
   m_Name: DreamcatcherImage
-  m_TagString: Untagged
+  m_TagString: DCImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
