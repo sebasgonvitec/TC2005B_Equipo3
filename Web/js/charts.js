@@ -71,8 +71,20 @@
                  options: {
                      scales: {
                          y: {
-                             beginAtZero: true
-                         }
+                             beginAtZero: true,
+                             title: {
+                                display: true,
+                                text: 'Total Times the User Logged In'//Name of Y axis 
+                            }   
+                         },
+
+                         x: {
+                            beginAtZero: true,
+                            title: {
+                               display: true,
+                               text: 'Username'//Name of Y axis 
+                           }   
+                        }
                      }
                  }
              })
@@ -144,12 +156,20 @@
                          x: {
                              min: '2022-05-15',
                              type: 'time',
-                             time: {
-                                 unit: 'day'
-                             }
+                             title: {
+                                display: true,
+                                text: 'Range from first to last connection'//Name of Y axis 
+                            },   
+                            time: {
+                                unit: 'day'
+                            }
                          },
                          y: {
-                             beginAtZero: true
+                             beginAtZero: true,
+                             title: {
+                                display: true,
+                                text: 'Username'//Name of Y axis 
+                            }
                          }
                      }
                  }
@@ -278,11 +298,23 @@
                  },
  
                  options: {
-                     scales: {
-                         y: {
-                             beginAtZero: true
-                         }
-                     }
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                               display: true,
+                               text: 'Number of Times Played'//Name of Y axis 
+                           }   
+                        },
+
+                        x: {
+                           beginAtZero: true,
+                           title: {
+                              display: true,
+                              text: 'Level Name'//Name of Y axis 
+                          }   
+                       }
+                    }
                  },
  
                  //plugins: [topLabels]
@@ -434,11 +466,23 @@
                  },
  
                  options: {
-                     scales: {
-                         y: {
-                             beginAtZero: true
-                         }
-                     }
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                               display: true,
+                               text: 'Time in Seconds'//Name of Y axis 
+                           }   
+                        },
+
+                        x: {
+                           beginAtZero: true,
+                           title: {
+                              display: true,
+                              text: 'Username'//Name of Y axis 
+                          }   
+                       }
+                    }
                  }
              })   
     }
