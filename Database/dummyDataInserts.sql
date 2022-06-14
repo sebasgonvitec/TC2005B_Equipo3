@@ -8,16 +8,15 @@ USE asleep_db;
 
 -- Dummy data for table users
 SET AUTOCOMMIT=0;
-INSERT INTO users VALUES (1,'supremaciaTopo','eltoposiguevivo', 1, '2022-05-21 11:34:22', '2022-05-23 19:43:47', 3), 
-(2,'testUser','userTest', 0, '2022-05-23 13:43:47', '2022-05-23 13:43:47', 1),
-(3,'user123','computadora', 0, '2022-05-23 17:02:56', '2022-06-19 9:29:52', 2),
-(4,'wtfIsAsleep','wtfIsRemi', 0, '2022-05-26 10:29:18', '2022-05-26 10:29:18', 1),
-(5,'carlitos','clavoUnClavito', 3, '2022-05-27 16:18:06', '2022-06-08 13:01:47', 7),
-(6,'Topo','quieroUnTopo', 0, '2022-05-27 20:26:01', '2022-05-27 20:26:01', 1),
-(7,'tigres','tragaronTrigo', 5, '2022-05-27 18:56:57', '2022-06-14 22:16:20', 12),
-(8,'andy1D','teamo1D', 2, '2022-06-03 15:45:51', '2022-06-06 23:06:24', 2),
-(9,'JiminMiVaron','BTS2002', 2, '2022-06-04 00:33:11', '2022-06-09 16:37:43', 4),
-(10,'Akemi', 'soyracista', 1, '2022-06-04 09:34:33', '2022-06-04 16:35:23', 1);
+INSERT INTO users VALUES (NULL,'supremaciaTopo','eltoposiguevivo', 1, '2022-05-21 11:34:22', '2022-05-23 19:43:47', 3), 
+(NULL,'testUser','userTest', 0, '2022-05-23 13:43:47', '2022-05-23 13:43:47', 1),
+(NULL,'user123','computadora', 0, '2022-05-23 17:02:56', '2022-06-19 9:29:52', 2),
+(NULL,'wtfIsAsleep','wtfIsRemi', 0, '2022-05-26 10:29:18', '2022-05-26 10:29:18', 1),
+(NULL,'carlitos','clavoUnClavito', 3, '2022-05-27 16:18:06', '2022-06-08 13:01:47', 7),
+(NULL,'Topo','quieroUnTopo', 0, '2022-05-27 20:26:01', '2022-05-27 20:26:01', 1),
+(NULL,'tigres','tragaronTrigo', 5, '2022-05-27 18:56:57', '2022-06-14 22:16:20', 12),
+(NULL,'andy1D','teamo1D', 2, '2022-06-03 15:45:51', '2022-06-06 23:06:24', 2),
+(NULL,'JiminMiVaron','BTS2002', 2, '2022-06-04 00:33:11', '2022-06-09 16:37:43', 4);
 COMMIT;
 
 -- Dummy data for levels

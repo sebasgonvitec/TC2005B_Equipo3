@@ -1,9 +1,9 @@
 /*
  Script to manage the Maker Mode
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  14/05/2022
  

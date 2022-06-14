@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" defer src="../js/game_charts.js"></script>
+    <link href="../css/charts.css" type="text/css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <title>User Charts</title>
+</head>
+<body>
+    <header class="container">
+        <h1>User charts using Charts JS</h1>
+    </header>
+
+    <div class="container">
+        <h2>Graph #1: The 10 most active users</h2>
+        <p> Bar Chart, User log view. </p>
+        <canvas id="firstChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
+    </div>
+
+    <div class="container">
+        <h2> Graph #2: First and Last Connection of each user </h2>
+        <p> Timeline Chart, User log view. </p>
+        <canvas id="secondChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
+    </div>
+
+    <div class="container">
+        <h2> Graph #3: The percentage of levels each user has created </h2>
+        <p> Pie Chart, User View. </p>
+        <canvas id="apiChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
+    </div>
+
+    <div class="container">
+        <h2> Graph #4: The 10 most played levels </h2>
+        <p> Bar Chart, Times levels view.  </p>
+        <canvas id="thirdChart" width=auto height=auto></canvas>
+    </div>
+
+    <div class="container">
+        <h2> Graph #5: The best 5 times by levels </h2>
+        <p> Bar chart, (a drop down will be use but at the moment a string is used) </p>
+        <div> 
+            <form id="form-submit">
+                <select id="levels" name="levels">
+
+                    <option> Choose a level </option>
+                </select>
+            </form>
+        </div>
+        <canvas id="fourthChart" width=auto height=auto style="max-width: 600px; max-height: 600px;"></canvas>
+    </div>
+
+</body>
+</html>

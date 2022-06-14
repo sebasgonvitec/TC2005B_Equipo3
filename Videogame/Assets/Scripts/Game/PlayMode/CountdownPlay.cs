@@ -90,17 +90,19 @@ public class CountdownPlay : MonoBehaviour
             textbox.text = niceTime;
         }
 
-        if(timeStart <= 10)
+        if(timeStart <= 20)
+
         {
             if (!nightmareSound.isPlaying)
             {
                 nightmareSound.Play();
             }
             
-            saturation -= 9 * Time.deltaTime;
+            saturation -= 4.5f * Time.deltaTime;
             _colorGrading.saturation.value = saturation;
 
-            intensity += 0.1f * Time.deltaTime;
+            intensity += 0.05f * Time.deltaTime;
+
             _chromaticAberration.intensity.value = intensity;
         }
     }

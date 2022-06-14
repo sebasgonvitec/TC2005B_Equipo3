@@ -13,7 +13,9 @@ public class SignOut : MonoBehaviour
     void Start()
     {
         signOutButton = signOutButton.GetComponent<Button>();
-		signOutButton.onClick.AddListener(SignOutTaskOnClick);    
+		signOutButton.onClick.AddListener(SignOutTaskOnClick);
+        GameObject.FindGameObjectWithTag("LoginMusic").GetComponent<LoginMusic>().StopMusic(); 
+        GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().PlayMusic();   
     }
 
     //Sign out button on click action
