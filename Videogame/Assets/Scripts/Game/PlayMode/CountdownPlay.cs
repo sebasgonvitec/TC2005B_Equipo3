@@ -14,6 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CountdownPlay : MonoBehaviour
 {
@@ -28,9 +29,18 @@ public class CountdownPlay : MonoBehaviour
 
     private bool timerStop;
 
+    [SerializeField] private AudioSource nightmareSound;
     //Events for timer start and runOut
     public static event Action OnTimerRunOutPlay;
     public static event Action OnTimerStartPlay;
+
+    public PostProcessVolume _postProcessVolume;
+    private ColorGrading _colorGrading;
+    private ChromaticAberration _chromaticAberration;
+
+
+    private float saturation;
+    private float intensity;
 
     private void OnEnable()
     {
@@ -47,10 +57,13 @@ public class CountdownPlay : MonoBehaviour
     {
         timerStop = false;
         timeStart = PlayerPrefs.GetInt("levelTime");
-        //timeStart = 337;
         textbox.enabled = true;
         initialTime = timeStart;
         OnTimerStartPlay?.Invoke();
+
+        _postProcessVolume.profile.TryGetSettings(out _colorGrading);
+        _postProcessVolume.profile.TryGetSettings(out _chromaticAberration);
+   
     }
     
     void Update()
@@ -75,6 +88,20 @@ public class CountdownPlay : MonoBehaviour
 
             //Update timer in UI
             textbox.text = niceTime;
+        }
+
+        if(timeStart <= 20)
+        {
+            if (!nightmareSound.isPlaying)
+            {
+                nightmareSound.Play();
+            }
+            
+            saturation -= 4.5f * Time.deltaTime;
+            _colorGrading.saturation.value = saturation;
+
+            intensity += 0.05f * Time.deltaTime;
+            _chromaticAberration.intensity.value = intensity;
         }
     }
 

@@ -1,9 +1,9 @@
 /*
  Script to manage the Maker Mode
 
- Sebastián González Villacorta - A01029746
- Karla Valeria Mondragón Rosas - A01025108
- Andreína Isable Sanánez Rico - A01024927
+ Sebastiï¿½n Gonzï¿½lez Villacorta - A01029746
+ Karla Valeria Mondragï¿½n Rosas - A01025108
+ Andreï¿½na Isable Sanï¿½nez Rico - A01024927
 
  14/05/2022
  
@@ -40,6 +40,9 @@ public class MakerMode : MonoBehaviour
 
     private bool goalPlaced; // indicates if the end portal has been placed
 
+    [SerializeField] private AudioSource placeBlockSound;
+    [SerializeField] private AudioSource selectBlockSound;
+    [SerializeField] private AudioSource deleteSound;
     //First try of dynamic dreamcatcher menu
     //private List<GameObject> dreamCatchers = new List<GameObject>();
     //public Transform dreamCatcherInventory;
@@ -47,6 +50,7 @@ public class MakerMode : MonoBehaviour
 
     void Start()
     {
+        
         //Generate side bar with all draggable elements
         for (int i = 0; i < blocks.Length; i++)
         {
@@ -61,6 +65,10 @@ public class MakerMode : MonoBehaviour
                 // When clicking the button assign the current index to the variable id
                 button.GetComponent<Button>().onClick.AddListener(() =>
                 {
+                    if (!selectBlockSound.isPlaying)
+                    {
+                        selectBlockSound.Play();
+                    }
                     //Set block sprite to preview sprite
                     //testSprite.sprite = blocks[u].blockSprite;
                     //testSprite.transform.localScale = blocks[u].transform.localScale;
@@ -73,6 +81,10 @@ public class MakerMode : MonoBehaviour
                 button.GetComponent<Image>().sprite = blocks[i].blockSprite;
                 button.GetComponent<Button>().onClick.AddListener(() =>
                 {
+                    if (!selectBlockSound.isPlaying)
+                    {
+                        selectBlockSound.Play();
+                    }
                     //Set block sprite to preview sprite
                     testSprite.sprite = blocks[u].blockSprite;
                     testSprite.transform.localScale = blocks[u].transform.localScale;
@@ -85,6 +97,10 @@ public class MakerMode : MonoBehaviour
                 button.GetComponent<Image>().sprite = blocks[i].blockSprite;
                 button.GetComponent<Button>().onClick.AddListener(() =>
                 {
+                    if (!selectBlockSound.isPlaying)
+                    {
+                        selectBlockSound.Play();
+                    }
                     //Set block sprite to preview sprite
                     testSprite.sprite = blocks[u].blockSprite;
                     testSprite.transform.localScale = blocks[u].transform.localScale;
@@ -97,6 +113,10 @@ public class MakerMode : MonoBehaviour
                 button.GetComponent<Image>().sprite = blocks[i].blockSprite;
                 button.GetComponent<Button>().onClick.AddListener(() =>
                 {
+                    if (!selectBlockSound.isPlaying)
+                    {
+                        selectBlockSound.Play();
+                    }
                     //Set block sprite to preview sprite
                     testSprite.sprite = blocks[u].blockSprite;
                     testSprite.transform.localScale = blocks[u].transform.localScale;
@@ -112,6 +132,8 @@ public class MakerMode : MonoBehaviour
             //    testSprite.transform.localScale = blocks[u].transform.localScale;
             //    id = u;
             //});
+
+            GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().StopMusic();
         }
     }
 
@@ -133,6 +155,11 @@ public class MakerMode : MonoBehaviour
                 var i = Physics2D.CircleCast(pos, 0.4f, Vector2.zero);
                 if (i.collider == null)
                 {
+                    if (!placeBlockSound.isPlaying)
+                    {
+                        placeBlockSound.Play();
+                    }
+                
                     if (blocks[id].id == 3 && !goalPlaced) //Stops player from placing more than one goal portal
                     {
                         Instantiate(blocks[id], pos, Quaternion.identity);
@@ -155,6 +182,11 @@ public class MakerMode : MonoBehaviour
                     var j = Physics2D.CircleCast(pos, 0.4f, Vector2.zero);
                     if (j.collider != null && !j.collider.CompareTag("Player") && !j.collider.CompareTag("DefaultBlocks"))
                     {
+                        if (!deleteSound.isPlaying)
+                        {
+                            deleteSound.Play();
+                        }
+
                         if (j.collider.gameObject.CompareTag("PortalGoal"))
                         {
                             goalPlaced = false;

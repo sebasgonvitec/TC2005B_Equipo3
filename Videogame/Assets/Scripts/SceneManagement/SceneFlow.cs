@@ -34,6 +34,7 @@ public class SceneFlow : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(3, LoadSceneMode.Single);
+        GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().PlayMusic();        
 
     }
 

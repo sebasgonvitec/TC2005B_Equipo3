@@ -34,7 +34,11 @@ public class PlayerMovePlay : MonoBehaviour
     private Animator playerAnimation;
 
     private bool paralysis;
-    private int paralysisTime = 3;
+    private int paralysisTime = 5;
+
+    [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] private AudioSource walkSoundEffect;
+    [SerializeField] private AudioSource paralysisSoundEffect;
 
     private void OnEnable()
     {
@@ -89,16 +93,35 @@ public class PlayerMovePlay : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
+                jumpSoundEffect.Play();
                 player.velocity = new Vector2(player.velocity.x, jumpSpeed);
             }
 
             if (Input.GetButtonDown("Jump") && isTouchingBox)
             {
+                jumpSoundEffect.Play();
                 player.velocity = new Vector2(player.velocity.x, jumpSpeed);
             }
         }
 
         playerAnimation.SetFloat("Speed", Mathf.Abs(player.velocity.x));
+        if (Mathf.Abs(playerAnimation.GetFloat("Speed")) > 0.1f)
+        {
+            if (!walkSoundEffect.isPlaying)
+            {
+                walkSoundEffect.Play();
+
+            }
+
+            if (!isTouchingGround)
+            {
+                walkSoundEffect.Stop();
+            }
+        }
+        else if (Mathf.Abs(playerAnimation.GetFloat("Speed")) < 0.1f)
+        {
+            walkSoundEffect.Stop();
+        }
         playerAnimation.SetBool("OnGround", (isTouchingGround || isTouchingBox));
         playerAnimation.SetBool("PushingBox", isPushingBox);
 
@@ -129,6 +152,11 @@ public class PlayerMovePlay : MonoBehaviour
 
     IEnumerator WaitForParalysis()
     {
+        if (!paralysisSoundEffect.isPlaying)
+        {
+            paralysisSoundEffect.Play();
+
+        }
         DisablePlayerMovementPlay();
         yield return new WaitForSeconds(paralysisTime);
         paralysis = false;

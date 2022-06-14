@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpSpeed = 8f;
     private float direction = 0f;
     private Rigidbody2D player;
+    private Transform playerTransform;
 
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -35,7 +36,11 @@ public class PlayerMove : MonoBehaviour
     private Animator playerAnimation;
 
     private bool paralysis;
-    private int paralysisTime = 3;
+    private int paralysisTime = 5;
+
+    [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] private AudioSource walkSoundEffect;
+    [SerializeField] private AudioSource paralysisSoundEffect;
 
     private void OnEnable()
     {
@@ -51,6 +56,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        playerTransform = GetComponent<Transform>();
         playerAnimation = GetComponent<Animator>();
         EnablePlayerMovement();
     }
@@ -60,7 +66,10 @@ public class PlayerMove : MonoBehaviour
     {
         //If not on Test Mode do nothing
         if (!MakerMode.playMode)
-            return;
+        {
+            playerTransform.position = new Vector3(-31.78f, -22.5f, 0f);
+        }
+        else { 
 
         //Check if touching ground or box for jumping mechanics
         isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -93,19 +102,40 @@ public class PlayerMove : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && isTouchingGround)
             {
+                jumpSoundEffect.Play();
                 player.velocity = new Vector2(player.velocity.x, jumpSpeed);
             }
 
             if (Input.GetButtonDown("Jump") && isTouchingBox)
             {
+                jumpSoundEffect.Play();
                 player.velocity = new Vector2(player.velocity.x, jumpSpeed);
             }
         }
 
         playerAnimation.SetFloat("Speed", Mathf.Abs(player.velocity.x));
+        if (Mathf.Abs(playerAnimation.GetFloat("Speed")) > 0.1f)
+        {
+            if (!walkSoundEffect.isPlaying)
+            {
+                walkSoundEffect.Play();
+
+            }
+
+            if (!isTouchingGround)
+            {
+                walkSoundEffect.Stop();
+            }
+        }
+        else if(Mathf.Abs(playerAnimation.GetFloat("Speed")) < 0.1f)
+        {
+            walkSoundEffect.Stop();
+        }
+
         playerAnimation.SetBool("OnGround", (isTouchingGround || isTouchingBox));
         playerAnimation.SetBool("PushingBox", isPushingBox);
-        //playerAnimation.SetBool("Paralysis", paralysis);
+            //playerAnimation.SetBool("Paralysis", paralysis);
+        }
 
     }
 
@@ -138,9 +168,15 @@ public class PlayerMove : MonoBehaviour
     //Paralysis for 3 seconds after touching Imer
     IEnumerator WaitForParalysis()
     {
+        if (!paralysisSoundEffect.isPlaying)
+        {
+            paralysisSoundEffect.Play();
+
+        }
         DisablePlayerMovement();
         yield return new WaitForSeconds(paralysisTime);
         paralysis = false;
+        paralysisSoundEffect.Stop();
         EnablePlayerMovement();
     }
 }
