@@ -91,6 +91,7 @@ public class CountdownPlay : MonoBehaviour
         }
 
         if(timeStart <= 20)
+
         {
             if (!nightmareSound.isPlaying)
             {
@@ -101,6 +102,7 @@ public class CountdownPlay : MonoBehaviour
             _colorGrading.saturation.value = saturation;
 
             intensity += 0.05f * Time.deltaTime;
+
             _chromaticAberration.intensity.value = intensity;
         }
     }

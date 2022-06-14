@@ -13,6 +13,7 @@ function random_color(alpha=1.0)
 
 // To plot data from an API, we first need to fetch a request, and then process the data.
 // Graph 1: Bar Chart, User log view. The 10 most active users
+
 try {
     const user_log_view = await fetch('http://localhost:5000/api/userLogView/g1',{
         method: 'GET'
@@ -79,6 +80,7 @@ catch(error) {
 
 // Graph 2: Timeline Chart, User log view. First and Last Connection of each user
 // ESTA ES LA GRÁFICA QUE NECESITA EL DATE-FNS DEL PROBLEMA 
+
 try {
     const connections_view = await fetch('http://localhost:5000/api/userLogView/g2',{
         method: 'GET'
@@ -146,9 +148,7 @@ try {
 }
 catch(error) {
     console.log(error)
-} 
-
-// Graph 3: Pie Chart, User View. The percentage of levels each user has created 
+ 
 try
 {
     const user_view = await fetch('http://localhost:5000/api/userView',{

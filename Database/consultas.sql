@@ -4,7 +4,13 @@ SELECT * FROM users;
 SELECT * FROM levels;
 SELECT * FROM gameplays;
 
--- SELECT num_levels_created FROM users;
+
+SELECT num_levels_created FROM users;
+SELECT * FROM gameplays;
+
+DESCRIBE users;
+DESCRIBE levels;
+DESCRIBE gameplays;
 
 -- SELECT * FROM gameplays;
 

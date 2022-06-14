@@ -27,7 +27,8 @@ public class MainMusic : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
         _audioSource = GetComponent<AudioSource>();
 
-        
+
+        GameObject.FindGameObjectWithTag("LoginMusic").GetComponent<MainMusic>().StopMusic();
     }
 
     public void PlayMusic()
