@@ -132,8 +132,6 @@ public class MakerMode : MonoBehaviour
             //    testSprite.transform.localScale = blocks[u].transform.localScale;
             //    id = u;
             //});
-
-            GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().StopMusic();
         }
     }
 
