@@ -106,8 +106,6 @@ public class APITest : MonoBehaviour
                 Debug.Log("Error: " + www.error);
             }
         }
-
-        
     }
 
     //Get username of a certain level_id from levels view 
@@ -127,21 +125,20 @@ public class APITest : MonoBehaviour
             {
                 Debug.Log("Error: " + www.error);
             }
-        }
-
-        
+        } 
     }
 
     
     //Function that loads all level buttons in the select page
     public void LoadLevels()
     {
-        Clear();
+        //Clear();
         //Debug.Log("Load Levels Started");
         for (int i = 0; i < allLevels.levels.Count; i++)
         {
-            Level lvl = allLevels.levels[i]; // access current level
-            LevelView levelView = allLevelView.levelViews[i]; // access current view
+            int j = i;
+            Level lvl = allLevels.levels[j]; // access current level
+            LevelView levelView = allLevelView.levelViews[j]; // access current view
 
             //StartCoroutine(GetUsername(lvl.id_level));
             // Level lvl = allLevels.levels[i]; // access current level
@@ -153,7 +150,7 @@ public class APITest : MonoBehaviour
             textFields[2].text = lvl.times_played.ToString();
             textFields[3].text = levelView.date_created;
 
-            
+
             //Debug.Log(lvl.level_file);
             item.GetComponent<Button>().onClick.AddListener(() =>
             {

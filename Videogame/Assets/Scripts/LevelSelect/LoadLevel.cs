@@ -35,8 +35,6 @@ public class LoadLevel : MonoBehaviour
         
         OnLoadAlt(PlayerPrefs.GetString("levelString"));
 
-        GameObject.FindGameObjectWithTag("MainMusic").GetComponent<MainMusic>().StopMusic();
-
         //OnLoadAlt(levelStringAndre);
     }
     //Function to load elements from string into the level
