@@ -31,5 +31,5 @@ BEGIN
 	SET @levelUser = NEW.id_user;  
     #SET @numLevels = 
     SELECT num_levels_created FROM users WHERE id_user = levelUser;
-	UPDATE #donde num_levels_created = num_levels_created
+	UPDATE num_levels_created = num_levels_created + 1;
 END$$
